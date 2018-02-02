@@ -1,0 +1,28 @@
+
+<h1> Create new Intern </h1>
+
+<%= form_with scope: :intern, url: interns_path, local: true do |form| %>
+  <p>
+    <%= form.label :display_name %><br>
+    <%= form.text_field :display_name %>
+  </p>
+
+  <p>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= form.label :batch %><br>
+    <%= form.number_field :batch,  min: 0 %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
