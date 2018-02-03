@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
 
 
-  resources :interns
-
+  resources :interns do
+    get 'search', :on => :collection
+  end
 
 end

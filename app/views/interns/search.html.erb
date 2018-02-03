@@ -1,0 +1,11 @@
+<h1> Search </h1>
+<%= form_tag(search_interns_path, method: :get) do %>
+  <%= text_field_tag :q %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+
+<% if defined? @interns %>
+  <h1> Search Results </h1>
+  <%=	render 'list' %>
+<% end %>

@@ -19,7 +19,7 @@ class InternsController < ApplicationController
   end
 
   def search
-    
+    @interns = Intern.search(params[:q])
   end
 end
 
