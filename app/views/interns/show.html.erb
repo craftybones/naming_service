@@ -14,6 +14,15 @@
 </p>
 
 <p>
+  <strong>Emails: <%= @intern.emails.size %></strong>
+  <% @intern.emails.each do |email| %>
+    <div>
+      <span> <%= email.category %> </span> - <span> <%= email.address %> </span>
+    </div>
+  <% end %>
+</p>
+
+<p>
   <strong>Batch:</strong>
   <%= @intern.batch %>
 </p>

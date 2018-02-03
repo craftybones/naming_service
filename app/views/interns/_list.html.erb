@@ -3,6 +3,7 @@
     <th>Display Name</th>
     <th>First Name</th>
     <th>Last Name</th>
+    <th>Emails</th>
     <th>Batch</th>
   </tr>
 
@@ -11,6 +12,7 @@
       <td><%= intern.display_name %></td>
       <td><%= intern.first_name %></td>
       <td><%= intern.last_name %></td>
+      <td><%= intern.emails.size %></td>
       <td><%= intern.batch %></td>
     </tr>
   <% end %>
