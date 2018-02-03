@@ -5,7 +5,12 @@
 <% end %>
 
 
-<% if defined? @interns %>
-  <h1> Search Results </h1>
-  <%=	render 'list' %>
+<% if @interns != nil %>
+  <% if @interns.any? %>
+    <h1> Search Results </h1>
+    <%=	render 'list' %>
+  <% else %>
+    <h1> No results found </h1>
+  <% end %>
+
 <% end %>

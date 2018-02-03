@@ -19,7 +19,7 @@ class InternsController < ApplicationController
   end
 
   def search
-    @interns = Intern.search(params[:q])
+    @interns = Intern.search(params[:q]) unless params[:q] == nil
   end
 end
 
