@@ -1,0 +1,39 @@
+<%= form_with model: @intern, local: true do |form| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :display_name %><br>
+    <%= form.text_field :display_name %>
+  </p>
+
+  <p>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= form.label :batch %><br>
+    <%= form.number_field :batch,  min: 0 %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

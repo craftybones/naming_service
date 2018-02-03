@@ -11,6 +11,20 @@ class InternsController < ApplicationController
     @intern = Intern.find(params[:id])
   end
 
+  def edit
+    @intern = Intern.find(params[:id])
+  end
+
+  def update
+    @intern = Intern.find(params[:id])
+
+    if @intern.update(intern_params)
+      redirect_to @intern
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @intern = Intern.new(intern_params)
 
@@ -20,6 +34,13 @@ class InternsController < ApplicationController
 
   def search
     @interns = Intern.search(params[:q]) unless params[:q] == nil
+  end
+
+  def destroy
+    @intern = Intern.find(params[:id])
+    @intern.destroy
+
+    redirect_to interns_path
   end
 end
 
