@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203065409) do
+ActiveRecord::Schema.define(version: 20180203090426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dropbox_info", force: :cascade do |t|
+    t.bigint "intern_id"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["intern_id"], name: "index_dropbox_info_on_intern_id"
+  end
 
   create_table "emails", force: :cascade do |t|
     t.bigint "intern_id"
@@ -22,6 +30,14 @@ ActiveRecord::Schema.define(version: 20180203065409) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["intern_id"], name: "index_emails_on_intern_id"
+  end
+
+  create_table "github_info", force: :cascade do |t|
+    t.bigint "intern_id"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["intern_id"], name: "index_github_info_on_intern_id"
   end
 
   create_table "interns", force: :cascade do |t|
@@ -33,5 +49,16 @@ ActiveRecord::Schema.define(version: 20180203065409) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "slack_info", force: :cascade do |t|
+    t.bigint "intern_id"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["intern_id"], name: "index_slack_info_on_intern_id"
+  end
+
+  add_foreign_key "dropbox_info", "interns"
   add_foreign_key "emails", "interns"
+  add_foreign_key "github_info", "interns"
+  add_foreign_key "slack_info", "interns"
 end
