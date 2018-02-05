@@ -5,6 +5,7 @@ class InternsController < ApplicationController
   end
 
   def new
+    @intern = Intern.new
   end
 
   def show

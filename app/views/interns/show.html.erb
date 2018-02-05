@@ -27,17 +27,24 @@
   <%= @intern.batch %>
 </p>
 
-<p>
-  <strong>Github Information</strong>
-  <div> <span> Username </span> - <span> <%= @intern.github.username %> </span> </div>
-</p>
+<% if @intern.github != nil %>
+  <p>
+    <strong>Github Information</strong>
+    <div> <span> Username </span> - <span> <%= @intern.github.username %> </span> </div>
+  </p>
+<% end %>
 
-<p>
-  <strong>Slack Information</strong>
-  <div> <span> Username </span> - <span> <%= @intern.slack.username %> </span> </div>
-</p>
 
-<p>
-  <strong>Dropbox Information</strong>
-  <div> <span> Username </span> - <span> <%= @intern.dropbox.username %> </span> </div>
-</p>
+<% if @intern.slack != nil %>
+  <p>
+    <strong>Slack Information</strong>
+    <div> <span> Username </span> - <span> <%= @intern.slack.username %> </span> </div>
+  </p>
+<% end %>
+
+<% if @intern.slack != nil %>
+  <p>
+    <strong>Dropbox Information</strong>
+    <div> <span> Username </span> - <span> <%= @intern.dropbox.username %> </span> </div>
+  </p>
+<% end %>
