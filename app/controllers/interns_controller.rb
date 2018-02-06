@@ -49,8 +49,8 @@ end
 private
 
   def intern_params
-    params.require(:intern).permit(:display_name, :first_name, :last_name, :batch,
-                                   github_attributes: [:username],
-                                   slack_attributes: [:username],
-                                   dropbox_attributes: [:username])
+    params.require(:intern).permit(:id, :display_name, :first_name, :last_name, :batch,
+                                   github_attributes: [:id, :username],
+                                   slack_attributes: [:id, :username],
+                                   dropbox_attributes: [:id, :username])
   end
