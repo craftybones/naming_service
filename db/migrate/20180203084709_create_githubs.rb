@@ -1,6 +1,6 @@
 class CreateGithubs < ActiveRecord::Migration[5.1]
   def change
-    create_table :github_infos do |t|
+    create_table :github_info do |t|
       t.references :intern, foreign_key: true
       t.string :username
 

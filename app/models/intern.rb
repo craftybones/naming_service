@@ -14,4 +14,14 @@ class Intern < ApplicationRecord
                       :dropbox => :username
                   }
 
+  accepts_nested_attributes_for :github
+  accepts_nested_attributes_for :slack
+  accepts_nested_attributes_for :dropbox
+
+  def build_dependents
+    build_github
+    build_dropbox
+    build_slack
+  end
+
 end

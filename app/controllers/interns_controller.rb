@@ -6,6 +6,7 @@ class InternsController < ApplicationController
 
   def new
     @intern = Intern.new
+    @intern.build_dependents
   end
 
   def show
@@ -28,7 +29,6 @@ class InternsController < ApplicationController
 
   def create
     @intern = Intern.new(intern_params)
-
     @intern.save
     redirect_to @intern
   end
@@ -49,5 +49,8 @@ end
 private
 
   def intern_params
-    params.require(:intern).permit(:display_name, :first_name, :last_name, :batch)
+    params.require(:intern).permit(:display_name, :first_name, :last_name, :batch,
+                                   github_attributes: [:username],
+                                   slack_attributes: [:username],
+                                   dropbox_attributes: [:username])
   end
