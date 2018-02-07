@@ -33,10 +33,6 @@ class InternsController < ApplicationController
     redirect_to @intern
   end
 
-  def search
-    @interns = Intern.search(params[:q]) unless params[:q] == nil
-  end
-
   def destroy
     @intern = Intern.find(params[:id])
     @intern.destroy
