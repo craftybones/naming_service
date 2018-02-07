@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Github, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it 'should belongs to intern' do
+      t = Github.reflect_on_association(:intern)
+      expect(t.macro).to eq(:belongs_to)
+    end
+  end
 end
