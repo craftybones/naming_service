@@ -35,7 +35,7 @@ RSpec.describe InternsController, type: :controller do
 
     before(:each) do
       @actual_intern = double('Intern', display_name: 'Intern 1')
-      allow(Intern).to receive(:find).with('1').and_return(@actual_intern)
+      expect(Intern).to receive(:find).with('1').and_return(@actual_intern)
     end
 
     it 'should render show template' do
@@ -54,7 +54,7 @@ RSpec.describe InternsController, type: :controller do
 
     before(:each) do
       @actual_intern = double('Intern', display_name: 'Intern 1')
-      allow(Intern).to receive(:find).with('1').and_return(@actual_intern)
+      expect(Intern).to receive(:find).with('1').and_return(@actual_intern)
     end
 
     it 'should render edit template' do
@@ -70,17 +70,17 @@ RSpec.describe InternsController, type: :controller do
   end
 
   describe 'PUT update' do
-    pending 'should redirect to the created intern' do
-      intern = double('Intern', display_name: 'Intern 2')
+    it 'should redirect to the created intern' do
+      intern = double('Intern', id: 'id')
       intern_attributes = {display_name: 'Intern 1'}
 
-      allow(Intern).to receive(:find).and_return(intern)
+      expect(Intern).to receive(:find).and_return(intern)
       allow_any_instance_of(InternsController).to receive(:intern_params).and_return(intern_attributes)
       allow(intern).to receive(:update).with(intern_attributes).and_return(true)
 
-      post :update, params: {id: '1', display_name: 'Intern 1'}
+      post :update, params: {id: 'id', display_name: 'Intern 1'}
 
-      expect(response).to redirect_to(interns_path)
+      expect(response).to redirect_to(intern_path)
     end
 
   end

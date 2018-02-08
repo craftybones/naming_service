@@ -21,7 +21,7 @@ class InternsController < ApplicationController
     @intern = Intern.find(params[:id])
 
     if @intern.update(intern_params)
-      redirect_to @intern
+      redirect_to intern_path
     else
       render 'edit'
     end
