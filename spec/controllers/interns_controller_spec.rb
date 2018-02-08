@@ -102,4 +102,17 @@ RSpec.describe InternsController, type: :controller do
     end
   end
 
+  describe 'DELETE destroy' do
+    it 'should delete' do
+      intern = double('Intern', id: 'id')
+
+      expect(Intern).to receive(:find).with('id').and_return(intern)
+      expect(intern).to receive(:destroy)
+
+      delete :destroy, params: {id: 'id', display_name: 'Intern 1'}
+
+      expect(response).to redirect_to(interns_path)
+    end
+  end
+
 end

@@ -30,6 +30,7 @@ class InternsController < ApplicationController
   def create
     @intern = Intern.new(intern_params)
     @intern.save
+
     redirect_to intern_path(@intern)
   end
 
