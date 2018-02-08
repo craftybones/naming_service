@@ -14,6 +14,11 @@
   <% end %>
 
   <p>
+    <%= form.label :emp_id %><br>
+    <%= form.number_field :emp_id %>
+  </p>
+
+  <p>
     <%= form.label :display_name %><br>
     <%= form.text_field :display_name %>
   </p>
@@ -31,6 +36,16 @@
   <p>
     <%= form.label :batch %><br>
     <%= form.number_field :batch,  min: 0 %>
+  </p>
+
+  <p>
+    <%= form.label :dob %><br>
+    <%= form.date_field :dob,  min: 0 %>
+  </p>
+
+  <p>
+    <%= form.label :gender %><br>
+    <%= form.text_field :gender,  min: 0 %>
   </p>
 
   <%= form.fields_for :github do |github_fields| %>

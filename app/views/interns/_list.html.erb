@@ -1,19 +1,31 @@
 <table>
   <tr>
+    <th>Emp ID</th>
     <th>Display Name</th>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>Emails</th>
     <th>Batch</th>
+    <th>Gender</th>
+    <th>No. of emails</th>
+    <th>DOB</th>
+    <th>Slack Username</th>
+    <th>Github Username</th>
+    <th>Dropbox Username</th>
   </tr>
 
   <% @interns.each do |intern| %>
     <tr>
+      <td><%= intern.emp_id %></td>
       <td><%= intern.display_name %></td>
       <td><%= intern.first_name %></td>
       <td><%= intern.last_name %></td>
-      <td><%= intern.emails.size %></td>
       <td><%= intern.batch %></td>
+      <td><%= intern.gender %></td>
+      <td><%= intern.emails.size %></td>
+      <td><%= intern.dob %></td>
+      <td><%= intern.slack.username %></td>
+      <td><%= intern.github.username %></td>
+      <td><%= intern.dropbox.username %></td>
     </tr>
   <% end %>
 </table>
