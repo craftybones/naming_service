@@ -115,4 +115,17 @@ RSpec.describe InternsController, type: :controller do
     end
   end
 
+  describe 'GET search' do
+    it 'should return search results as json when query is present' do
+      query = 'QUERY'
+      intern = double('Intern', id: 'id')
+
+      expect(Intern).to receive(:search).with(query).and_return(intern)
+
+      get :search, params: {q: query}
+
+      expect(JSON.parse(response.body)['name']).to eq('Intern')
+    end
+  end
+
 end

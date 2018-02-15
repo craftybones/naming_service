@@ -40,6 +40,10 @@ class InternsController < ApplicationController
 
     redirect_to interns_path
   end
+
+  def search
+    render json: Intern.search(params[:q]), include: [:github, :emails, :dropbox, :slack] if params[:q].present?
+  end
 end
 
 

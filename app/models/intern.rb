@@ -20,4 +20,19 @@ class Intern < ApplicationRecord
     }
   end
 
+  def self.search search_term
+    joins(:github).joins(:slack).joins(:emails).joins(:dropbox).where(search_query, {:search_term => "%#{search_term}%"})
+  end
+
+  private
+  def self.search_query
+    (searchable_fields.map { |field|
+      "#{field} LIKE :search_term"
+    }).join(' OR ')
+  end
+
+  def self.searchable_fields
+    %w(emp_id display_name first_name last_name github_info.username slack_info.username dropbox_info.username emails.address)
+  end
+
 end
