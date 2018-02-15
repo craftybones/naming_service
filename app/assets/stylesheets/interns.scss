@@ -1,3 +1,55 @@
 // Place all the styles related to the Interns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables";
+
+.interns {
+
+  table {
+    font-family: sans-serif;
+    color: $secondary-color-2;
+    border-collapse: collapse;
+    font-size: 18px;
+    margin: 0 auto;
+  }
+
+  tr {
+    border-bottom: 3px solid $secondary-color-7;
+
+    &:not(:first-child) {
+      background-color: $secondary-color-8;
+    }
+
+    th, td {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    td {
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      &.name {
+        .sub_names {
+          padding-top: 5px;
+          font-size: 16px;
+          color: $secondary-color-3;
+        }
+      }
+
+      &.emails {
+        div {
+          font-size: 16px;
+          &:nth-child(odd) {
+            padding-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+}

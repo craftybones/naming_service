@@ -1,31 +1,38 @@
-<table>
-  <tr>
-    <th>Emp ID</th>
-    <th>Display Name</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Batch</th>
-    <th>Gender</th>
-    <th>No. of emails</th>
-    <th>DOB</th>
-    <th>Slack Username</th>
-    <th>Github Username</th>
-    <th>Dropbox Username</th>
-  </tr>
-
-  <% @interns.each do |intern| %>
+<div class="interns">
+  <table>
     <tr>
-      <td><%= intern.emp_id %></td>
-      <td><%= intern.display_name %></td>
-      <td><%= intern.first_name %></td>
-      <td><%= intern.last_name %></td>
-      <td><%= intern.batch %></td>
-      <td><%= intern.gender %></td>
-      <td><%= intern.emails.size %></td>
-      <td><%= intern.dob %></td>
-      <td><%= intern.slack.username %></td>
-      <td><%= intern.github.username %></td>
-      <td><%= intern.dropbox.username %></td>
+      <th>Emp ID</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>DOB</th>
+      <th>Emails</th>
+      <th>Phone</th>
+      <th>Batch</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
-</table>
+
+    <% @interns.each do |intern| %>
+      <tr>
+        <td><%= intern.emp_id %></td>
+        <td class="name">
+          <div class="display_name"><%= intern.display_name %></div>
+          <div class="sub_names">
+            <span><%= intern.first_name %></span>
+            <span><%= intern.last_name %></span>
+          </div>
+        </td>
+        <td>
+          <span class="fa fa-<%=gender_icon intern.gender%> fa-lg"></span>
+        </td>
+        <td><%= intern.dob.strftime('%d %b %Y') %></td>
+        <td class="emails">
+          <div><%= intern.emails[0].address %></div>
+          <div><%= intern.emails[1].address %></div>
+        </td>
+        <td>coming soon</td>
+        <td><%= intern.batch %></td>
+        <td>coming soon</td>
+      </tr>
+    <% end %>
+  </table>
+</div>

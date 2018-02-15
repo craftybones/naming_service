@@ -1,0 +1,13 @@
+@import "variables";
+
+.navbar {
+  background-color: $primary-color-3;
+  padding-left: 50px;
+  padding-right: 50px;
+
+  .brand {
+    padding: 10px;
+    color: $secondary-color-8;
+    font-size: 24px;
+  }
+}
