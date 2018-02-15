@@ -14,7 +14,7 @@
   <% end %>
 
   <p>
-    <%= form.label :emp_id %><br>
+    <%= form.label :emp_ID %><br>
     <%= form.number_field :emp_id %>
   </p>
 
@@ -32,6 +32,15 @@
     <%= form.label :last_name %><br>
     <%= form.text_field :last_name %>
   </p>
+
+  <p><b> Emails: </b></p>
+  <%= form.fields_for :emails do |email_fields| %>
+    <li>
+      <%= email_fields.label :category, email_fields.object.category %>
+      <%= email_fields.hidden_field :category %>
+      <%= email_fields.text_field :address %>
+    </li>
+  <% end %>
 
   <p>
     <%= form.label :batch %><br>
