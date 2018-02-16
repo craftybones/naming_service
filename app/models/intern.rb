@@ -1,9 +1,9 @@
 class Intern < ApplicationRecord
 
-  has_many :emails
-  has_one :github
-  has_one :slack
-  has_one :dropbox
+  has_many :emails, dependent: :delete_all
+  has_one :github, dependent: :destroy
+  has_one :slack, dependent: :destroy
+  has_one :dropbox, dependent: :destroy
 
   accepts_nested_attributes_for :github
   accepts_nested_attributes_for :slack
