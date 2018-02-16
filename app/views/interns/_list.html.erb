@@ -31,7 +31,19 @@
         </td>
         <td>coming soon</td>
         <td><%= intern.batch %></td>
-        <td>coming soon</td>
+        <td>
+          <%= link_to(intern) do %>
+            <span class="fa fa-eye"/>
+          <% end %>
+
+          <%= link_to(intern, method: :delete) do %>
+            <span class="fa fa-trash"/>
+          <% end %>
+
+          <%= link_to(edit_intern_path(intern)) do %>
+            <span class="fa fa-edit"/>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
