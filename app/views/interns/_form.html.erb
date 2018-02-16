@@ -43,6 +43,11 @@
   <% end %>
 
   <p>
+    <%= form.label :phone_number %><br>
+    <%= form.number_field :phone_number %>
+  </p>
+
+  <p>
     <%= form.label :batch %><br>
     <%= form.number_field :batch,  min: 0 %>
   </p>
