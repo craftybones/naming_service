@@ -1,15 +1,7 @@
 @import "variables";
 
 body {
-  background-color: $secondary-color-7;
+  background-color: $secondary-color-7 !important;
   color: $secondary-color-1;
   margin: 0;
-}
-
-.content {
-  padding: 100px;
-}
-
-.pull-right {
-  float: right;
 }

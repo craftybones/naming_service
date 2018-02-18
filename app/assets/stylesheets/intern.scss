@@ -1,0 +1,89 @@
+@import "variables";
+
+.intern {
+  background-color: $secondary-color-8;
+  margin-top: 50px;
+  padding: 50px;
+
+
+  .profile {
+
+    .pic-and-names {
+      text-align: center;
+
+      .profile-picture {
+        border: 1px solid $secondary-color-7;
+        padding: 10px;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      .display-name {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .full-name {
+        color: $secondary-color-3;
+        font-size: 20px;
+      }
+
+      .actions {
+        margin: 20px 0;
+
+        .action {
+          display: inline;
+          margin: 0 15px;
+        }
+      }
+
+    }
+  }
+
+  .other-details {
+    .details-category {
+      border: 1px solid $secondary-color-7;
+      padding: 20px 50px;
+      margin-bottom: 20px;
+
+      .category-heading {
+        font-size: 24px;
+        color: $secondary-color-3;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .attributes {
+    padding-left: 20px;
+    .attribute {
+      font-size: 16px;
+      padding: 3px 0;
+
+      .field {
+        display: inline-block;
+        width: 40%;
+        vertical-align: top;
+      }
+
+      .value {
+        display: inline-block;
+        font-weight: 600;
+      }
+    }
+
+    .email-attribute {
+      margin-bottom: 10px;
+
+      .email-category {
+        font-weight: normal;
+      }
+
+      .email-address {
+
+      }
+    }
+  }
+
+
+}

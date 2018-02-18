@@ -1,70 +1,114 @@
-<p>
-  <strong>Emp ID:</strong>
-  <%= @intern.emp_id %>
-</p>
+<div class="container">
+  <div class="intern row">
+    <div class="profile col-md-3">
+      <div class="pic-and-names">
+        <div class="profile-picture">
+          <span class="fa fa-user fa-9x"/>
+        </div>
+        <div class="display-name">
+          <%= @intern.display_name %>
+        </div>
+        <div class="full-name">
+          <span> <%= @intern.first_name %> </span>
+          <span> <%= @intern.last_name %> </span>
+        </div>
 
-<p>
-  <strong>Display Name:</strong>
-  <%= @intern.display_name %>
-</p>
+        <div class="actions">
+          <div class="action">
+            <%= link_to(edit_intern_path(@intern)) do %>
+              <span class="fa fa-edit fa-lg"/>
+            <% end %>
+          </div>
+          <div class="action">
+            <%= link_to(@intern, method: :delete) do %>
+              <span class="fa fa-trash fa-lg"/>
+            <% end %>
+          </div>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @intern.first_name %>
-</p>
+          <div class="action">
+            <%= link_to(@intern, method: :delete) do %>
+              <span class="fa fa-ban fa-lg"/>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="attributes">
+        <div class="attribute">
+          <div class="field"> Emp Id </div>
+          <div class="value"> <%= @intern.emp_id %> </div>
+        </div>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @intern.last_name %>
-</p>
+        <div class="attribute">
+          <div class="field"> DOB </div>
+          <div class="value"> <%= @intern.dob %> </div>
+        </div>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @intern.gender %>
-</p>
+        <div class="attribute">
+          <div class="field"> Gender </div>
+          <div class="value">
+            <span class="fa fa-<%=gender_icon @intern.gender%> fa-lg"></span>
+          </div>
+        </div>
 
-<p>
-  <strong>DOB:</strong>
-  <%= @intern.dob %>
-</p>
-
-<p>
-  <strong>Email(s): <%= @intern.emails.size %></strong>
-  <% @intern.emails.each do |email| %>
-    <div>
-      <span> <%= email.category %> </span> - <span> <%= email.address %> </span>
+        <div class="attribute">
+          <div class="field"> Batch </div>
+          <div class="value"> <%= @intern.batch %> </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-</p>
+    <div class="other-details col-md-9">
+      <div class="details-category">
+        <div class="category-heading"> Contact Details </div>
+        <div class="attributes">
+          <div class="attribute">
+            <div class="field"> Emails </div>
+            <div class="value">
+              <% @intern.emails.each do |email| %>
+                <div class="email-attribute">
+                  <div class="email-category"> <%= email.category %> </div>
+                  <div class="email-address"> <%= email.address %> </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
 
-<p>
-  <strong> Phone Number:</strong>
-  <%= @intern.phone_number %>
-</p>
+          <div class="attribute">
+            <div class="field"> Phone Number </div>
+            <div class="value"> <%= @intern.phone_number %> </div>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Batch:</strong>
-  <%= @intern.batch %>
-</p>
+      <div class="details-category">
+        <div class="category-heading"> Github Details </div>
+        <div class="attributes">
+          <div class="attribute">
+            <div class="field"> Username </div>
+            <div class="value"> <%= @intern.github.username if @intern.github != nil %> </div>
+          </div>
+        </div>
+      </div>
 
-<% if @intern.github != nil %>
-  <p>
-    <strong>Github Information</strong>
-    <div> <span> Username </span> - <span> <%= @intern.github.username %> </span> </div>
-  </p>
-<% end %>
+      <div class="details-category">
+        <div class="category-heading"> Slack Details </div>
+        <div class="attributes">
+          <div class="attribute">
+            <div class="field"> Username </div>
+            <div class="value"> <%= @intern.slack.username if @intern.slack != nil %> </div>
+          </div>
+        </div>
+      </div>
 
-
-<% if @intern.slack != nil %>
-  <p>
-    <strong>Slack Information</strong>
-    <div> <span> Username </span> - <span> <%= @intern.slack.username %> </span> </div>
-  </p>
-<% end %>
-
-<% if @intern.slack != nil %>
-  <p>
-    <strong>Dropbox Information</strong>
-    <div> <span> Username </span> - <span> <%= @intern.dropbox.username %> </span> </div>
-  </p>
-<% end %>
+      <div class="details-category">
+        <div class="category-heading"> Dropbox Details </div>
+        <div class="attributes">
+          <div class="attribute">
+            <div class="field"> Username </div>
+            <div class="value"> <%= @intern.dropbox.username if @intern.dropbox != nil %> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
