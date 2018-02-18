@@ -1,4 +1,8 @@
 
 <h1> Edit Intern </h1>
 
+<%= link_to('All Interns', interns_path) %>
+
+<%= link_to(@intern.display_name, intern_path(@intern)) %>
+
 <%=	render 'form' %>
