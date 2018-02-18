@@ -1,0 +1,31 @@
+<div class="pic-and-names">
+  <div class="profile-picture">
+    <span class="fa fa-user fa-9x"/>
+  </div>
+  <div class="display-name">
+    <%= @intern.display_name %>
+  </div>
+  <div class="full-name">
+    <span> <%= @intern.first_name %> </span>
+    <span> <%= @intern.last_name %> </span>
+  </div>
+
+  <div class="actions">
+    <div class="action">
+      <%= link_to(edit_intern_path(@intern)) do %>
+        <span class="fa fa-edit fa-lg"/>
+      <% end %>
+    </div>
+    <div class="action">
+      <%= link_to(@intern, method: :delete) do %>
+        <span class="fa fa-trash fa-lg"/>
+      <% end %>
+    </div>
+
+    <div class="action">
+      <%= link_to() do %>
+        <span class="fa fa-ban fa-lg"/>
+      <% end %>
+    </div>
+  </div>
+</div>

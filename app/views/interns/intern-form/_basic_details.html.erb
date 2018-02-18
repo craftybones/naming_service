@@ -1,0 +1,39 @@
+<div class="details-category">
+  <div class="category-heading"> Basic Details </div>
+  <div class="attributes">
+    <div class="attribute">
+      <div class="field"> Emp ID </div>
+      <div class="value"> <%= form.number_field :emp_id %> </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> Display Name </div>
+      <div class="value"> <%= form.text_field :display_name %> </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> First Name </div>
+      <div class="value"> <%= form.text_field :first_name %> </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> Last Name </div>
+      <div class="value"> <%= form.text_field :last_name %> </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> DOB </div>
+      <div class="value"> <%= form.date_field :dob %> </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> Gender </div>
+      <div class="value"> <%= form.text_field :gender %> </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> Batch </div>
+      <div class="value"> <%= form.number_field :batch, min: 0 %> </div>
+    </div>
+  </div>
+</div>

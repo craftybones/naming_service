@@ -1,0 +1,11 @@
+<div class="details-category">
+  <div class="category-heading"> Slack Details </div>
+  <div class="attributes">
+    <%= form.fields_for :slack do |slack_fields| %>
+      <div class="attribute">
+        <div class="field"> Username </div>
+        <div class="value"> <%= slack_fields.text_field :username %> </div>
+      </div>
+    <% end %>
+  </div>
+</div>

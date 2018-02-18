@@ -1,86 +1,33 @@
-<%= form_with model: @intern, local: true do |form| %>
+<div class="container">
+  <div class="intern-form">
+    <%= form_with model: @intern, local: true do |form| %>
 
-  <% if @intern != nil && @intern.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@intern.errors.count, "error") %>
-      </h2>
-      <ul>
-        <% @intern.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+      <% if @intern != nil && @intern.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@intern.errors.count, "error") %>
+          </h2>
+          <ul>
+            <% @intern.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= render partial: '/interns/intern-form/basic_details', locals: {form: form} %>
+
+      <%= render partial: '/interns/intern-form/contact_details', locals: {form: form} %>
+
+      <%= render partial: '/interns/intern-form/github_details', locals: {form: form} %>
+
+      <%= render partial: '/interns/intern-form/slack_details', locals: {form: form} %>
+
+      <%= render partial: '/interns/intern-form/dropbox_details', locals: {form: form} %>
+
+      <p>
+        <%= form.submit %>
+      </p>
   <% end %>
-
-  <p>
-    <%= form.label :emp_ID %><br>
-    <%= form.number_field :emp_id %>
-  </p>
-
-  <p>
-    <%= form.label :display_name %><br>
-    <%= form.text_field :display_name %>
-  </p>
-
-  <p>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
-  </p>
-
-  <p>
-    <%= form.label :last_name %><br>
-    <%= form.text_field :last_name %>
-  </p>
-
-  <p><b> Emails: </b></p>
-  <%= form.fields_for :emails do |email_fields| %>
-    <li>
-      <%= email_fields.label :category, email_fields.object.category %>
-      <%= email_fields.hidden_field :category %>
-      <%= email_fields.text_field :address %>
-    </li>
-  <% end %>
-
-  <p>
-    <%= form.label :phone_number %><br>
-    <%= form.number_field :phone_number %>
-  </p>
-
-  <p>
-    <%= form.label :batch %><br>
-    <%= form.number_field :batch,  min: 0 %>
-  </p>
-
-  <p>
-    <%= form.label :dob %><br>
-    <%= form.date_field :dob,  min: 0 %>
-  </p>
-
-  <p>
-    <%= form.label :gender %><br>
-    <%= form.text_field :gender,  min: 0 %>
-  </p>
-
-  <%= form.fields_for :github do |github_fields| %>
-    <p><b> Github: </b></p>
-    <%= github_fields.label :username %><br>
-    <%= github_fields.text_field :username %>
-  <% end %>
-
-  <%= form.fields_for :slack do |slack_fields| %>
-    <p><b> Slack: </b></p>
-    <%= slack_fields.label :username %><br>
-    <%= slack_fields.text_field :username %>
-  <% end %>
-
-  <%= form.fields_for :dropbox do |dropbox_fields| %>
-    <p><b> Dropbox: </b></p>
-    <%= dropbox_fields.label :username %><br>
-    <%= dropbox_fields.text_field :username %>
-  <% end %>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  </div>
+</div>

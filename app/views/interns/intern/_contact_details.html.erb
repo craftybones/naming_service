@@ -1,0 +1,21 @@
+<div class="details-category">
+  <div class="category-heading"> Contact Details </div>
+  <div class="attributes">
+    <div class="attribute">
+      <div class="field"> Emails </div>
+      <div class="value">
+        <% @intern.emails.each do |email| %>
+          <div class="email-attribute">
+            <div class="email-category"> <%= email.category %> </div>
+            <div class="email-address"> <%= email.address %> </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> Phone Number </div>
+      <div class="value"> <%= @intern.phone_number %> </div>
+    </div>
+  </div>
+</div>

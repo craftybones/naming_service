@@ -1,0 +1,11 @@
+<div class="details-category">
+  <div class="category-heading"> Github Details </div>
+  <div class="attributes">
+    <%= form.fields_for :github do |github_fields| %>
+      <div class="attribute">
+        <div class="field"> Username </div>
+        <div class="value"> <%= github_fields.text_field :username %> </div>
+      </div>
+    <% end %>
+  </div>
+</div>

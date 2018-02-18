@@ -1,0 +1,22 @@
+<div class="details-category">
+  <div class="category-heading"> Contact Details </div>
+  <div class="attributes">
+    <div class="attribute">
+      <div class="field"> Emails </div>
+      <div class="value">
+        <%= form.fields_for :emails do |email_fields| %>
+          <div class="email-attribute">
+            <div class="email-category"> <%= email_fields.object.category %> </div>
+            <%= email_fields.hidden_field :category %>
+            <div class="email-address"> <%= email_fields.text_field :address %> </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="attribute">
+      <div class="field"> Phone Number </div>
+      <div class="value"> <%= form.number_field :phone_number %> </div>
+    </div>
+  </div>
+</div>

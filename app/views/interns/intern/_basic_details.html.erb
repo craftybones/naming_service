@@ -1,0 +1,23 @@
+<div class="attributes">
+  <div class="attribute">
+    <div class="field"> Emp Id </div>
+    <div class="value"> <%= @intern.emp_id %> </div>
+  </div>
+
+  <div class="attribute">
+    <div class="field"> DOB </div>
+    <div class="value"> <%= @intern.dob %> </div>
+  </div>
+
+  <div class="attribute">
+    <div class="field"> Gender </div>
+    <div class="value">
+      <span class="fa fa-<%=gender_icon @intern.gender%> fa-lg"></span>
+    </div>
+  </div>
+
+  <div class="attribute">
+    <div class="field"> Batch </div>
+    <div class="value"> <%= @intern.batch %> </div>
+  </div>
+</div>
