@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'rails-controller-testing'
   gem 'sqlite3'
+  gem 'simplecov'
 end
 
 group :production do
