@@ -21,9 +21,7 @@
             <span><%= intern.last_name %></span>
           </div>
         </td>
-        <td>
-          <span class="fa fa-<%=gender_icon intern.gender%> fa-lg"></span>
-        </td>
+        <td><%= intern.gender.humanize %></td>
         <td><%= intern.dob.strftime('%d %b %Y') %></td>
         <td class="emails">
           <div><%= intern.emails[0].address %></div>
