@@ -130,15 +130,32 @@ RSpec.describe InternsController, type: :controller do
   end
 
   describe 'GET search' do
-    it 'should return search results as json when query is present' do
+    it 'should return search results as json when api key is set' do
       query = 'QUERY'
       intern = double('Intern', id: 'id')
 
+      expect(Intern).to receive(:search).with(query).and_return([intern])
+
+      get :search, params: {q: query, api: true}
+
+      expect(JSON.parse(response.body)[0]['name']).to eq('Intern')
+    end
+
+    it 'should filter the search results based on parameters' do
+      query = 'QUERY'
+      intern = double('Intern', id: 'id')
+      params = { q: query, api: true, emp_id: 'emp_id', display_name: 'display_name', first_name: 'first_name', email: 'email',
+                 last_name: 'last_name', batch: 'batch', dob: 'dob', phone_number: 'phone_number', gender: 'gender',
+                 github_username: 'github_username', slack_username: 'slack_username', dropbox_username: 'dropbox_username'}
+
       expect(Intern).to receive(:search).with(query).and_return(intern)
 
-      get :search, params: {q: query}
+      intern.stub_chain(:emp_id, :display_name, :first_name, :last_name, :email, :batch, :dob, :phone_number, :gender,
+                        :github_username, :slack_username, :dropbox_username).and_return([intern])
 
-      expect(JSON.parse(response.body)['name']).to eq('Intern')
+      get :search, params: params
+
+      expect(JSON.parse(response.body)[0]['name']).to eq('Intern')
     end
   end
 

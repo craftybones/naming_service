@@ -152,7 +152,7 @@ RSpec.describe Intern, type: :model do
     end
 
     it 'should search by dropbox username' do
-      search_resuts = Intern.search 'slack'
+      search_resuts = Intern.search 'dropbox'
 
       expect(search_resuts.size).to eq(1)
       expect(search_resuts[0].dropbox.username).to eq('dropboxusername')
@@ -163,5 +163,100 @@ RSpec.describe Intern, type: :model do
 
       expect(search_resuts.size).to eq(0)
     end
+  end
+
+  describe 'filters' do
+    before(:each) do
+      Intern.create({:emp_id => '112233', :display_name => 'Display Name', :first_name => 'First Name', :last_name => 'Last Name',
+                     :phone_number => '9000000000', :dob => '12-10-10', :gender => 'male', :batch => '3',
+                     :github_attributes => {:username => 'gitusername'}, :slack_attributes => {:username => 'slackusername'},
+                     :dropbox_attributes => {:username => 'dropboxusername'}, :emails_attributes => [{:category => 'TW', :address => 'email@tw.com'}]})
+    end
+
+    it 'should fitler interns based on emp_id' do
+      interns = Intern.emp_id ('112233')
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].emp_id).to eq(112233)
+    end
+
+    it 'should filter by display name' do
+      interns = Intern.display_name 'Display Name'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].display_name).to eq('Display Name')
+    end
+
+    it 'should filter by first name' do
+      interns = Intern.first_name 'First Name'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].first_name).to eq('First Name')
+    end
+
+    it 'should fitler by last name' do
+      interns = Intern.last_name 'Last Name'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].last_name).to eq('Last Name')
+    end
+
+    it 'should fitler by gender' do
+      interns = Intern.gender 'male'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].gender).to eq('male')
+    end
+
+    it 'should fitler by dob' do
+      interns = Intern.dob '12-10-10'
+
+      expect(interns.size).to eq(1)
+    end
+
+    it 'should fitler by batch' do
+      interns = Intern.batch '3'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].batch).to eq(3)
+    end
+
+    it 'should fitler by phone number' do
+      interns = Intern.phone_number '9000000000'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].phone_number).to eq('9000000000')
+    end
+
+    it 'should search by email address' do
+      interns = Intern.email 'email@tw.com'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].emails.size).to eq(1)
+      expect(interns[0].emails[0].address).to eq('email@tw.com')
+    end
+
+    it 'should filter by github username' do
+      interns = Intern.github_username 'gitusername'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].github.username).to eq('gitusername')
+    end
+
+    it 'should filter by slack username' do
+      interns = Intern.slack_username 'slackusername'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].slack.username).to eq('slackusername')
+    end
+
+    it 'should filter by dropbox username' do
+      interns = Intern.dropbox_username 'dropboxusername'
+
+      expect(interns.size).to eq(1)
+      expect(interns[0].dropbox.username).to eq('dropboxusername')
+    end
+
+
   end
 end

@@ -6,4 +6,6 @@ class Email < ApplicationRecord
               "for category `#{object.category}` is invalid"
             end
   }
+
+  scope :address, -> (address) { where address: address }
 end

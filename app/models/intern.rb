@@ -16,6 +16,19 @@ class Intern < ApplicationRecord
   validates :gender, inclusion: { in: %w(male female others) }
   validate :validate_dob
 
+  scope :emp_id, -> (emp_id) { where emp_id: emp_id }
+  scope :display_name, -> (display_name) { where display_name: display_name }
+  scope :first_name, -> (first_name) { where first_name: first_name }
+  scope :last_name, -> (last_name) { where last_name: last_name }
+  scope :batch, -> (batch) { where batch: batch }
+  scope :dob, -> (dob) { where dob: dob }
+  scope :phone_number, -> (phone_number) { where phone_number: phone_number }
+  scope :gender, -> (gender) { where gender: gender }
+  scope :email, -> (address) { joins(:emails).merge(Email.address(address)) }
+  scope :github_username, -> (username) { joins(:github).merge(Github.username(username)) }
+  scope :dropbox_username, -> (username) { joins(:dropbox).merge(Dropbox.username(username)) }
+  scope :slack_username, -> (username) { joins(:slack).merge(Slack.username(username)) }
+
   def build_dependents
     build_github
     build_dropbox
@@ -27,7 +40,7 @@ class Intern < ApplicationRecord
   end
 
   def self.search search_term
-    joins(:github).joins(:slack).joins(:emails).joins(:dropbox).where(search_query, {:search_term => "%#{search_term}%"})
+    joins(:emails).joins(:github).joins(:slack).joins(:dropbox).where(search_query, {:search_term => "%#{search_term}%"})
   end
 
   private
@@ -38,7 +51,7 @@ class Intern < ApplicationRecord
   end
 
   def self.searchable_fields
-    %w(emp_id display_name first_name last_name github_info.username slack_info.username dropbox_info.username emails.address)
+    %w(emp_id display_name first_name last_name emails.address github_info.username slack_info.username dropbox_info.username )
   end
 
 
