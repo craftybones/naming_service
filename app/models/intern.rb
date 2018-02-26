@@ -10,6 +10,12 @@ class Intern < ApplicationRecord
   accepts_nested_attributes_for :dropbox
   accepts_nested_attributes_for :emails
 
+  validates :emp_id, :display_name, :first_name, :last_name, :dob, :batch, :gender, presence: true
+  validates :phone_number, numericality: true, length: { is: 10 }
+  validates :emp_id, :batch, numericality: true
+  validates :gender, inclusion: { in: %w(male female others) }
+  validate :validate_dob
+
   def build_dependents
     build_github
     build_dropbox
@@ -35,4 +41,10 @@ class Intern < ApplicationRecord
     %w(emp_id display_name first_name last_name github_info.username slack_info.username dropbox_info.username emails.address)
   end
 
+
+  def validate_dob
+    if dob != nil && dob >= Date.current
+      errors.add('Date of birth', 'must be past')
+    end
+  end
 end

@@ -1,5 +1,8 @@
 <div class="details-category">
-  <div class="category-heading"> Basic Details </div>
+  <div class="category-heading">
+    Basic Details
+    <span class="required"> * </span>
+  </div>
   <div class="attributes">
     <div class="attribute">
       <div class="field"> Emp ID </div>
@@ -22,13 +25,17 @@
     </div>
 
     <div class="attribute">
-      <div class="field"> DOB </div>
+      <div class="field"> Date of birth </div>
       <div class="value"> <%= form.date_field :dob %> </div>
     </div>
 
     <div class="attribute">
       <div class="field"> Gender </div>
-      <div class="value"> <%= form.text_field :gender %> </div>
+      <div class="value">
+        <%= form.radio_button :gender, 'male', :checked => true %> Male &emsp;
+        <%= form.radio_button :gender, 'female' %> Female &emsp;
+        <%= form.radio_button :gender, 'others' %> Others
+      </div>
     </div>
 
     <div class="attribute">

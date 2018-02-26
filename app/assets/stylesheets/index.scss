@@ -8,3 +8,8 @@ body {
   color: $secondary-color-1;
   margin: 0;
 }
+
+
+form .required {
+  color: $red;
+}

@@ -9,9 +9,10 @@ RSpec.describe InternsController, type: :controller do
     end
 
     it 'should give the list of interns' do
-      intern = Intern.create
+      interns = [double('Intern')]
+      expect(Intern).to receive(:all).and_return(interns)
       get :index
-      expect(assigns(:interns)).to eq([intern])
+      expect(assigns(:interns)).to eq(interns)
     end
   end
 
@@ -94,11 +95,24 @@ RSpec.describe InternsController, type: :controller do
 
       allow_any_instance_of(InternsController).to receive(:intern_params).and_return(intern_attributes)
       expect(Intern).to receive(:new).with(intern_attributes).and_return(intern)
-      expect(intern).to receive(:save)
+      expect(intern).to receive(:save).and_return(true)
 
       post :create, params: {id: 'id', display_name: 'Intern 1'}
 
       expect(response).to redirect_to(intern_path(intern))
+    end
+
+    it 'should render new when intern is not saved properly' do
+      intern = double('Intern', id: 'id')
+      intern_attributes = {display_name: 'Intern 1'}
+
+      allow_any_instance_of(InternsController).to receive(:intern_params).and_return(intern_attributes)
+      expect(Intern).to receive(:new).with(intern_attributes).and_return(intern)
+      expect(intern).to receive(:save).and_return(false)
+
+      post :create, params: {id: 'id', display_name: 'Intern 1'}
+
+      expect(response).to render_template('interns/new')
     end
   end
 

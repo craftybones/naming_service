@@ -23,10 +23,80 @@ RSpec.describe Intern, type: :model do
     end
   end
 
+  describe 'validations' do
+    it 'should have emp_id, display_name, first_name, last_name, dob, batch, gender presence validation' do
+      intern = Intern.create
+      intern.valid?
+      expect(intern.errors[:emp_id]).to include("can't be blank")
+      expect(intern.errors[:display_name]).to include("can't be blank")
+      expect(intern.errors[:first_name]).to include("can't be blank")
+      expect(intern.errors[:last_name]).to include("can't be blank")
+      expect(intern.errors[:dob]).to include("can't be blank")
+      expect(intern.errors[:batch]).to include("can't be blank")
+      expect(intern.errors[:gender]).to include("can't be blank")
+    end
+
+    it 'should have emp_id, batch number validation' do
+      intern = Intern.create(:emp_id => 'ss', :batch => 'sa')
+      intern.valid?
+      intern.errors.should have_key(:emp_id)
+      expect(intern.errors[:emp_id]).to include('is not a number')
+      expect(intern.errors[:batch]).to include('is not a number')
+    end
+
+    it 'should have phone_number numeric validation' do
+      intern = Intern.create(:phone_number => 'ss')
+      intern.valid?
+      intern.errors.should have_key(:emp_id)
+      expect(intern.errors[:phone_number]).to include('is not a number')
+    end
+
+    it 'should have phone_number length validation' do
+      intern = Intern.create(:phone_number => '90212')
+      intern.valid?
+      intern.errors.should have_key(:emp_id)
+      expect(intern.errors[:phone_number]).to include('is the wrong length (should be 10 characters)')
+    end
+
+    it 'should allow male as gender' do
+      intern = Intern.create(:gender => 'male')
+      intern.valid?
+      intern.errors.should_not have_key(:gender)
+    end
+
+    it 'should allow female as gender' do
+      intern = Intern.create(:gender => 'female')
+      intern.valid?
+      intern.errors.should_not have_key(:gender)
+    end
+
+    it 'should allow others as gender' do
+      intern = Intern.create(:gender => 'others')
+      intern.valid?
+      intern.errors.should_not have_key(:gender)
+    end
+
+    it 'should not allow other than male, female, others as gender' do
+      intern = Intern.create(:gender => 'oth')
+      intern.valid?
+      intern.errors.should have_key(:gender)
+      expect(intern.errors[:gender]).to include('is not included in the list')
+    end
+
+    it 'should not allow current or future dates as date of birth' do
+      intern = Intern.create(:dob => Date.current.to_s)
+      intern.valid?
+      intern.errors.should have_key('Date of birth')
+      expect(intern.errors['Date of birth']).to include('must be past')
+    end
+
+  end
+
   describe 'search' do
 
     before(:each) do
       Intern.create({:emp_id => '112233', :display_name => 'Display Name', :first_name => 'First Name', :last_name => 'Last Name',
+                    :phone_number => '9000000000', :dob => '12-10-10', :gender => 'male', :batch => '3',
                     :github_attributes => {:username => 'gitusername'}, :slack_attributes => {:username => 'slackusername'},
                     :dropbox_attributes => {:username => 'dropboxusername'}, :emails_attributes => [{:category => 'TW', :address => 'email@tw.com'}]})
     end
