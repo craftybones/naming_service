@@ -4,7 +4,7 @@
     <%= form.fields_for :dropbox do |dropbox_fields| %>
       <div class="attribute">
         <div class="field"> Username </div>
-        <div class="value"> <%= dropbox_fields.text_field :username %> </div>
+        <div class="value"> <%= dropbox_fields.text_field :username, placeholder: 'Dropbox Username'  %> </div>
       </div>
     <% end %>
   </div>

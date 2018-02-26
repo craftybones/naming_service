@@ -6,22 +6,22 @@
   <div class="attributes">
     <div class="attribute">
       <div class="field"> Emp ID </div>
-      <div class="value"> <%= form.number_field :emp_id %> </div>
+      <div class="value"> <%= form.number_field :emp_id, placeholder: 'Employee ID' %> </div>
     </div>
 
     <div class="attribute">
       <div class="field"> Display Name </div>
-      <div class="value"> <%= form.text_field :display_name %> </div>
+      <div class="value"> <%= form.text_field :display_name, placeholder: 'Display Name' %> </div>
     </div>
 
     <div class="attribute">
       <div class="field"> First Name </div>
-      <div class="value"> <%= form.text_field :first_name %> </div>
+      <div class="value"> <%= form.text_field :first_name, placeholder: 'First Name' %> </div>
     </div>
 
     <div class="attribute">
       <div class="field"> Last Name </div>
-      <div class="value"> <%= form.text_field :last_name %> </div>
+      <div class="value"> <%= form.text_field :last_name, placeholder: 'Last Name' %> </div>
     </div>
 
     <div class="attribute">
@@ -40,7 +40,7 @@
 
     <div class="attribute">
       <div class="field"> Batch </div>
-      <div class="value"> <%= form.number_field :batch, min: 0 %> </div>
+      <div class="value"> <%= form.number_field :batch, min: 0, placeholder: 'Batch Number' %> </div>
     </div>
   </div>
 </div>

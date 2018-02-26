@@ -4,7 +4,7 @@
     <%= form.fields_for :slack do |slack_fields| %>
       <div class="attribute">
         <div class="field"> Username </div>
-        <div class="value"> <%= slack_fields.text_field :username %> </div>
+        <div class="value"> <%= slack_fields.text_field :username, placeholder: 'Slack Username'  %> </div>
       </div>
     <% end %>
   </div>
