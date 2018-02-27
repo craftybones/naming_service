@@ -1,21 +1,20 @@
 <div class="details-category">
   <div class="category-heading">
     Basic Details
-    <span class="required"> * </span>
   </div>
   <div class="attributes">
     <div class="attribute">
-      <div class="field"> Emp ID </div>
+      <div class="field"> Emp ID <span class="required"> * </span> </div>
       <div class="value"> <%= form.number_field :emp_id, placeholder: 'Employee ID' %> </div>
     </div>
 
     <div class="attribute">
-      <div class="field"> Display Name </div>
+      <div class="field"> Display Name <span class="required"> * </span> </div>
       <div class="value"> <%= form.text_field :display_name, placeholder: 'Display Name' %> </div>
     </div>
 
     <div class="attribute">
-      <div class="field"> First Name </div>
+      <div class="field"> First Name <span class="required"> * </span> </div>
       <div class="value"> <%= form.text_field :first_name, placeholder: 'First Name' %> </div>
     </div>
 
@@ -25,12 +24,12 @@
     </div>
 
     <div class="attribute">
-      <div class="field"> Date of birth </div>
+      <div class="field"> Date of birth <span class="required"> * </span> </div>
       <div class="value"> <%= form.date_field :dob, max: Date.yesterday %> </div>
     </div>
 
     <div class="attribute">
-      <div class="field"> Gender </div>
+      <div class="field"> Gender <span class="required"> * </span> </div>
       <div class="value">
         <%= form.radio_button :gender, 'male', :checked => true %> Male &emsp;
         <%= form.radio_button :gender, 'female' %> Female &emsp;
@@ -39,7 +38,7 @@
     </div>
 
     <div class="attribute">
-      <div class="field"> Batch </div>
+      <div class="field"> Batch <span class="required"> * </span> </div>
       <div class="value"> <%= form.number_field :batch, min: 0, placeholder: 'Batch Number' %> </div>
     </div>
   </div>

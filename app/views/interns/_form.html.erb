@@ -14,6 +14,8 @@
       </div>
     <% end %>
 
+    <div class="required text-right"> * Required </div>
+
     <%= render partial: '/interns/intern-form/basic_details', locals: {form: form} %>
 
     <%= render partial: '/interns/intern-form/contact_details', locals: {form: form} %>
@@ -24,7 +26,7 @@
 
     <%= render partial: '/interns/intern-form/dropbox_details', locals: {form: form} %>
 
-    <p>
+    <p class="text-right">
       <%= form.submit %>
     </p>
   <% end %>
