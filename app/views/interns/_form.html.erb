@@ -1,33 +1,31 @@
-<div class="container">
-  <div class="intern-form">
-    <%= form_with model: @intern, local: true do |form| %>
+<div class="intern-form">
+  <%= form_with model: @intern, local: true do |form| %>
 
-      <% if @intern != nil && @intern.errors.any? %>
-        <div class="alert alert-danger" role="alert">
-          <h2>
-            <%= pluralize(@intern.errors.count, "error") %>
-          </h2>
-          <ul>
-            <% @intern.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <% if @intern != nil && @intern.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <h2>
+          <%= pluralize(@intern.errors.count, "error") %>
+        </h2>
+        <ul>
+          <% @intern.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <%= render partial: '/interns/intern-form/basic_details', locals: {form: form} %>
+    <%= render partial: '/interns/intern-form/basic_details', locals: {form: form} %>
 
-      <%= render partial: '/interns/intern-form/contact_details', locals: {form: form} %>
+    <%= render partial: '/interns/intern-form/contact_details', locals: {form: form} %>
 
-      <%= render partial: '/interns/intern-form/github_details', locals: {form: form} %>
+    <%= render partial: '/interns/intern-form/github_details', locals: {form: form} %>
 
-      <%= render partial: '/interns/intern-form/slack_details', locals: {form: form} %>
+    <%= render partial: '/interns/intern-form/slack_details', locals: {form: form} %>
 
-      <%= render partial: '/interns/intern-form/dropbox_details', locals: {form: form} %>
+    <%= render partial: '/interns/intern-form/dropbox_details', locals: {form: form} %>
 
-      <p>
-        <%= form.submit %>
-      </p>
+    <p>
+      <%= form.submit %>
+    </p>
   <% end %>
-  </div>
 </div>

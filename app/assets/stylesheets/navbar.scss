@@ -6,4 +6,14 @@
   .navbar-brand {
     color: $secondary-color-8;
   }
+
+  .nav-item {
+    .nav-link {
+      color: $secondary-color-8;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }

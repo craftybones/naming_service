@@ -1,5 +1,9 @@
 <div class="container">
-  <%= link_to('All Interns', interns_path) %>
+  <div class="heading">
+    <h2 class="text-center">
+      <span class="intern-name"><%= @intern.display_name %></span> 's Profile
+    </h2>
+  </div>
 
   <div class="intern row">
     <div class="profile col-md-3">

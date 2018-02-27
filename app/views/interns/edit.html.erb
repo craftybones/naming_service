@@ -1,8 +1,12 @@
-
-<h1> Edit Intern </h1>
-
-<%= link_to('All Interns', interns_path) %>
-
-<%= link_to(@intern.display_name, intern_path(@intern)) %>
-
-<%=	render 'form' %>
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center">
+      Edit <span class="intern-name"><%= @intern.display_name %></span> 's Profile
+    </h2>
+    <%= link_to(intern_path(@intern), html_options = {}) do %>
+      <span class="fa fa-arrow-left"></span>
+      <%= @intern.display_name %>
+    <% end %>
+  </div>
+  <%=	render 'form' %>
+</div>

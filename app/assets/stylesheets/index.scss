@@ -13,3 +13,17 @@ body {
 form .required {
   color: $red;
 }
+
+.container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.heading {
+  margin-bottom: 50px;
+  border-bottom: 1px solid $secondary-color-6;
+
+  .intern-name {
+    color: $primary-color-3;
+  }
+}

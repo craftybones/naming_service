@@ -26,7 +26,7 @@
 
     <div class="attribute">
       <div class="field"> Date of birth </div>
-      <div class="value"> <%= form.date_field :dob %> </div>
+      <div class="value"> <%= form.date_field :dob, max: Date.yesterday %> </div>
     </div>
 
     <div class="attribute">
