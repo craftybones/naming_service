@@ -30,7 +30,6 @@ RSpec.describe Intern, type: :model do
       expect(intern.errors[:emp_id]).to include("can't be blank")
       expect(intern.errors[:display_name]).to include("can't be blank")
       expect(intern.errors[:first_name]).to include("can't be blank")
-      expect(intern.errors[:last_name]).to include("can't be blank")
       expect(intern.errors[:dob]).to include("can't be blank")
       expect(intern.errors[:batch]).to include("can't be blank")
       expect(intern.errors[:gender]).to include("can't be blank")
