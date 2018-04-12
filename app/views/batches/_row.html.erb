@@ -1,0 +1,18 @@
+<tr>
+  <td><%= batch.name %></td>
+  <td><%= batch.start_date %></td>
+  <td><%= batch.end_date %></td>
+  <td>
+    <%= link_to(batch) do %>
+      <span class="fa fa-eye"></span>
+    <% end %>
+
+    <%= link_to(batches_path(edit_id: batch.id)) do %>
+      <span class="fa fa-edit"></span>
+    <% end %>
+
+    <%= link_to(batch, method: :delete) do %>
+      <span class="fa fa-trash"></span>
+    <% end %>
+  </td>
+</tr>

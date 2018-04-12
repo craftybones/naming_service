@@ -17,6 +17,13 @@
   tr {
     border-bottom: 3px solid $secondary-color-7;
 
+    &.edit-row {
+      border-left: 3px solid $primary-color-4;
+      border-right: 3px solid $primary-color-4;
+      border-bottom: 10px solid $secondary-color-7;
+      border-top: 10px solid $secondary-color-7;
+    }
+
     &:not(:first-child) {
       background-color: $secondary-color-8;
     }

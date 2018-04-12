@@ -7,4 +7,8 @@ Rails.application.routes.draw do
     get 'search', :on => :collection
   end
 
+  resources :batches do
+
+  end
+
 end

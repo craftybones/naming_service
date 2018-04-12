@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216062815) do
+ActiveRecord::Schema.define(version: 20180412051709) do
+
+  create_table "batches", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "dropbox_info", force: :cascade do |t|
     t.integer "intern_id"

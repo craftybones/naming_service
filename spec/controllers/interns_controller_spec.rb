@@ -73,7 +73,7 @@ RSpec.describe InternsController, type: :controller do
       allow_any_instance_of(InternsController).to receive(:intern_params).and_return(@intern_attributes)
     end
 
-    it 'should redirect to the created intern' do
+    it 'should redirect to the updated intern' do
       expect(@intern).to receive(:update).with(@intern_attributes).and_return(true)
 
       post :update, params: {id: 'id', display_name: 'Intern 1'}

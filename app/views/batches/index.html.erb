@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center"> Batches </h2>
+  </div>
+
+  <div class="interns">
+    <%= form_with model: @batch, local: true do |form| %>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Actions</th>
+        </tr>
+
+        <%= render 'form', form: form %>
+
+        <% @batches.each do |batch| %>
+          <%= render 'row', batch: batch %>
+        <% end %>
+
+      </table>
+    <% end %>
+  </div>
+</div>
