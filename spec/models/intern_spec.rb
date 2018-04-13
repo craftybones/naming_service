@@ -35,12 +35,11 @@ RSpec.describe Intern, type: :model do
       expect(intern.errors[:gender]).to include("can't be blank")
     end
 
-    it 'should have emp_id, batch number validation' do
-      intern = Intern.create(:emp_id => 'ss', :batch => 'sa')
+    it 'should have emp_id number validation' do
+      intern = Intern.create(:emp_id => 'ss')
       intern.valid?
       intern.errors.should have_key(:emp_id)
       expect(intern.errors[:emp_id]).to include('is not a number')
-      expect(intern.errors[:batch]).to include('is not a number')
     end
 
     it 'should have phone_number numeric validation' do
@@ -94,8 +93,9 @@ RSpec.describe Intern, type: :model do
   describe 'search' do
 
     before(:each) do
+      batch = Batch.create({:name => 'STEP-1'})
       Intern.create({:emp_id => '112233', :display_name => 'Display Name', :first_name => 'First Name', :last_name => 'Last Name',
-                    :phone_number => '9000000000', :dob => '12-10-10', :gender => 'male', :batch => '3',
+                    :phone_number => '9000000000', :dob => '12-10-10', :gender => 'male', :batch_id => batch.id,
                     :github_attributes => {:username => 'gitusername'}, :slack_attributes => {:username => 'slackusername'},
                     :dropbox_attributes => {:username => 'dropboxusername'}, :emails_attributes => [{:category => 'TW', :address => 'email@tw.com'}]})
     end
@@ -166,8 +166,9 @@ RSpec.describe Intern, type: :model do
 
   describe 'filters' do
     before(:each) do
+      batch = Batch.create({:name => 'STEP-1'})
       Intern.create({:emp_id => '112233', :display_name => 'Display Name', :first_name => 'First Name', :last_name => 'Last Name',
-                     :phone_number => '9000000000', :dob => '12-10-10', :gender => 'male', :batch => '3',
+                     :phone_number => '9000000000', :dob => '12-10-10', :gender => 'male', :batch_id => batch.id,
                      :github_attributes => {:username => 'gitusername'}, :slack_attributes => {:username => 'slackusername'},
                      :dropbox_attributes => {:username => 'dropboxusername'}, :emails_attributes => [{:category => 'TW', :address => 'email@tw.com'}]})
     end
@@ -193,31 +194,31 @@ RSpec.describe Intern, type: :model do
       expect(interns[0].first_name).to eq('First Name')
     end
 
-    it 'should fitler by last name' do
+    it 'should filter by last name' do
       interns = Intern.last_name 'Last Name'
 
       expect(interns.size).to eq(1)
       expect(interns[0].last_name).to eq('Last Name')
     end
 
-    it 'should fitler by gender' do
+    it 'should filter by gender' do
       interns = Intern.gender 'male'
 
       expect(interns.size).to eq(1)
       expect(interns[0].gender).to eq('male')
     end
 
-    it 'should fitler by dob' do
+    it 'should filter by dob' do
       interns = Intern.dob '12-10-10'
 
       expect(interns.size).to eq(1)
     end
 
-    it 'should fitler by batch' do
-      interns = Intern.batch '3'
+    it 'should filter by batch' do
+      interns = Intern.batch 'STEP-1'
 
       expect(interns.size).to eq(1)
-      expect(interns[0].batch).to eq(3)
+      expect(interns[0].batch.name).to eq('STEP-1')
     end
 
     it 'should fitler by phone number' do

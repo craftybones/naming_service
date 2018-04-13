@@ -7,6 +7,7 @@ class InternsController < ApplicationController
   def new
     @intern = Intern.new
     @intern.build_dependents
+    @batches = Batch.all
   end
 
   def show
@@ -15,6 +16,7 @@ class InternsController < ApplicationController
 
   def edit
     @intern = Intern.find(params[:id])
+    @batches = Batch.all
   end
 
   def update
@@ -60,7 +62,7 @@ end
 private
 
   def intern_params
-    params.require(:intern).permit(:id, :emp_id, :display_name, :first_name, :last_name, :batch, :gender, :dob, :phone_number,
+    params.require(:intern).permit(:id, :emp_id, :display_name, :first_name, :last_name, :batch_id, :gender, :dob, :phone_number,
                                    github_attributes: [:id, :username], slack_attributes: [:id, :username],
                                    dropbox_attributes: [:id, :username],
                                    emails_attributes: [:id, :category, :address])

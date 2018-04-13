@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412051709) do
+ActiveRecord::Schema.define(version: 20180413051521) do
 
   create_table "batches", force: :cascade do |t|
     t.string "name"
@@ -49,13 +49,13 @@ ActiveRecord::Schema.define(version: 20180412051709) do
     t.string "display_name"
     t.string "first_name"
     t.string "last_name"
-    t.integer "batch"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "emp_id"
     t.date "dob"
     t.string "gender"
     t.string "phone_number"
+    t.integer "batch_id"
   end
 
   create_table "slack_info", force: :cascade do |t|
