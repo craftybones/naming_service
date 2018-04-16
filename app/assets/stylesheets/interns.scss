@@ -42,6 +42,10 @@
       padding-bottom: 15px;
       white-space: nowrap;
 
+      &.not-in-tw {
+        color: $secondary-color-3;
+      }
+
       &.name {
         .sub_names {
           padding-top: 5px;

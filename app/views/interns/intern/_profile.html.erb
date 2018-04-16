@@ -3,6 +3,11 @@
     <span class="fa fa-user fa-9x"/>
   </div>
   <div class="display-name">
+    <span class="not-in-tw">
+      <% unless @intern.present_in_tw %>
+        <span class='fa fa-ban'></span>
+      <% end %>
+    </span>
     <%= @intern.display_name %>
   </div>
   <div class="full-name">
@@ -17,14 +22,18 @@
       <% end %>
     </div>
     <div class="action">
-      <%= link_to(@intern, method: :delete) do %>
+      <%= link_to(@intern, method: :delete, data: {confirm: 'Are you sure?'}) do %>
         <span class="fa fa-trash fa-lg"/>
       <% end %>
     </div>
 
     <div class="action">
-      <%= link_to() do %>
-        <span class="fa fa-ban fa-lg"/>
+      <%= link_to(intern_path(@intern, intern: {present_in_tw: !@intern.present_in_tw}), method: :patch) do %>
+        <% if @intern.present_in_tw %>
+          <span class='fa fa-ban fa-lg'></span>
+        <% else %>
+          <span class='fa fa-undo fa-lg'></span>
+        <% end %>
       <% end %>
     </div>
   </div>

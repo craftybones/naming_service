@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413051521) do
+ActiveRecord::Schema.define(version: 20180416094639) do
 
   create_table "batches", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180413051521) do
     t.string "gender"
     t.string "phone_number"
     t.integer "batch_id"
+    t.boolean "present_in_tw"
   end
 
   create_table "slack_info", force: :cascade do |t|

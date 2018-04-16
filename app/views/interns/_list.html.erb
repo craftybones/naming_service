@@ -1,6 +1,7 @@
 <div class="interns">
   <table>
     <tr>
+      <th></th>
       <th>Emp ID</th>
       <th>Name</th>
       <th>Gender</th>
@@ -9,11 +10,19 @@
       <th>Phone</th>
       <th>Batch</th>
       <th>Actions</th>
+      <th></th>
     </tr>
 
     <% @interns.each do |intern| %>
       <tr>
-        <td><%= intern.emp_id %></td>
+        <td class="not-in-tw">
+          <% unless intern.present_in_tw %>
+            <span class='fa fa-ban'></span>
+          <% end %>
+        </td>
+        <td class="emp-id">
+          <%= intern.emp_id %>
+        </td>
         <td class="name">
           <div class="display_name"><%= intern.display_name %></div>
           <div class="sub_names">
@@ -42,6 +51,7 @@
             <span class="fa fa-trash"/>
           <% end %>
         </td>
+        <td></td>
       </tr>
     <% end %>
   </table>
