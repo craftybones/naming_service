@@ -21,6 +21,11 @@ RSpec.describe Intern, type: :model do
       t = Intern.reflect_on_association(:dropbox)
       expect(t.macro).to eq(:has_one)
     end
+
+    it 'should belong to a batch' do
+      t = Intern.reflect_on_association(:batch)
+      expect(t.macro).to eq(:belongs_to)
+    end
   end
 
   describe 'validations' do

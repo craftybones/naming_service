@@ -1,11 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe Batch, type: :model do
+  describe 'associations' do
+    it 'should have many interns' do
+      t = Batch.reflect_on_association(:intern)
+      expect(t.macro).to eq(:has_many)
+    end
+  end
+
   describe 'validations' do
     it 'should have name presence validation' do
       batch = Batch.create
       batch.valid?
       expect(batch.errors[:name]).to include("can't be blank")
+    end
+
+    it 'should have name uniqueness validation' do
+      Batch.create({name: 'STEP1'})
+      batch = Batch.create({name: 'STEP1'})
+      batch.valid?
+      expect(batch.errors[:name]).to include('has already been taken')
+    end
+
+    it 'should not allow when end date is present without start date' do
+      batch = Batch.create({name: 'STEP1', end_date: Date.today})
+      expect(batch.errors[:start_date]).to include('cannot be empty when end date is present')
+    end
+
+    it 'should not allow end date less than start date' do
+      batch = Batch.create({name: 'STEP1', start_date: Date.today, end_date: Date.yesterday})
+      expect(batch.errors[:end_date]).to include('cannot be before start date')
     end
   end
 
