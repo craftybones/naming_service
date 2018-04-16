@@ -32,7 +32,8 @@ class BatchesController < ApplicationController
   end
 
   def destroy
-    Batch.find(params[:id]).destroy
+    batch = Batch.find(params[:id])
+    batch.destroy if batch.intern.size <= 0
     redirect_to batches_path
   end
 

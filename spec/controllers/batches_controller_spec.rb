@@ -58,9 +58,22 @@ RSpec.describe BatchesController, type: :controller do
   describe 'DELETE destroy' do
     it 'should delete' do
       batch = double('Batch', id: 'id')
+      allow(batch).to receive(:intern).and_return([])
 
       expect(Batch).to receive(:find).with('id').and_return(batch)
       expect(batch).to receive(:destroy)
+
+      delete :destroy, params: {id: 'id', name: 'STEP-1'}
+
+      expect(response).to redirect_to(batches_path)
+    end
+
+    it 'should not delete when the batch is already assigned to any intern' do
+      batch = double('Batch', id: 'id')
+      allow(batch).to receive(:intern).and_return([double('Intern')])
+
+      expect(Batch).to receive(:find).with('id').and_return(batch)
+      expect(batch).to_not receive(:destroy)
 
       delete :destroy, params: {id: 'id', name: 'STEP-1'}
 

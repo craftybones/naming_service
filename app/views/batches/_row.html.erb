@@ -2,6 +2,7 @@
   <td><%= batch.name %></td>
   <td><%= batch.start_date %></td>
   <td><%= batch.end_date %></td>
+  <td><%= batch.intern.size %></td>
   <td>
     <%= link_to(batch) do %>
       <span class="fa fa-eye"></span>
@@ -11,8 +12,10 @@
       <span class="fa fa-edit"></span>
     <% end %>
 
-    <%= link_to(batch, method: :delete) do %>
-      <span class="fa fa-trash"></span>
+    <% if batch.intern.size <= 0 %>
+      <%= link_to(batch, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+        <span class="fa fa-trash"></span>
+      <% end %>
     <% end %>
   </td>
 </tr>
