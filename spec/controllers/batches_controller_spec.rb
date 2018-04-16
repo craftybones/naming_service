@@ -98,4 +98,27 @@ RSpec.describe BatchesController, type: :controller do
     end
   end
 
+  describe 'GET show' do
+
+    before(:each) do
+      @actual_batch = double('Batch', name: 'STEP1', intern: [double('Intern')])
+      expect(Batch).to receive(:find).with('1').and_return(@actual_batch)
+    end
+
+    it 'should render show template' do
+      get :show, params: {id: 1}
+      expect(response).to render_template('batches/show')
+    end
+
+    it 'should find the batch using id' do
+      get :show, params: {id: 1}
+      expect(assigns(:batch)).to eq(@actual_batch)
+    end
+
+    it 'should assign interns of that particular batch' do
+      get :show, params: {id: 1}
+      expect(assigns(:interns)).to eq(@actual_batch.intern)
+    end
+  end
+
 end

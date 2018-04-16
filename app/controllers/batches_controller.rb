@@ -12,6 +12,11 @@ class BatchesController < ApplicationController
 
   end
 
+  def show
+    @batch = Batch.find(params[:id])
+    @interns = @batch.intern
+  end
+
   def create
     @batch = Batch.new(batch_params)
     if @batch.save
