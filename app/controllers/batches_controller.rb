@@ -14,14 +14,21 @@ class BatchesController < ApplicationController
 
   def create
     @batch = Batch.new(batch_params)
-    @batch.save
-    redirect_to batches_path
+    if @batch.save
+      redirect_to batches_path
+    else
+      render 'index'
+    end
   end
 
   def update
-    batch = Batch.find(params[:id])
-    batch.update(batch_params)
-    redirect_to batches_path
+    @batch = Batch.find(params[:id])
+    if @batch.update(batch_params)
+      redirect_to batches_path
+    else
+      render 'index'
+    end
+
   end
 
   def destroy
