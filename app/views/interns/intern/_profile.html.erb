@@ -3,11 +3,9 @@
     <span class="fa fa-user fa-9x"/>
   </div>
   <div class="display-name">
-    <span class="not-in-tw">
-      <% unless @intern.present_in_tw %>
-        <span class='fa fa-ban'></span>
-      <% end %>
-    </span>
+    <% unless @intern.present_in_tw %>
+      <span class='fa fa-ban not-in-tw'></span>
+    <% end %>
     <%= @intern.display_name %>
   </div>
   <div class="full-name">

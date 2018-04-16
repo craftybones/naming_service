@@ -39,7 +39,7 @@
 
     <div class="attribute">
       <div class="field"> Batch <span class="required"> * </span> </div>
-      <div class="value"> <%= form.select :batch_id, @batches.collect { |b| [b.name, b.id]}, {}, { :class => 'form-control' } %> </div>
+      <div class="value"> <%= form.select :batch_id, @batches.collect { |b| [b.name, b.id]}, {} %> </div>
     </div>
   </div>
 </div>

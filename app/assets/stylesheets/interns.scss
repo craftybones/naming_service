@@ -5,47 +5,8 @@
 @import "variables";
 
 .interns {
-
-  table {
-    font-family: sans-serif;
-    color: $secondary-color-2;
-    border-collapse: collapse;
-    font-size: 18px;
-    margin: 0 auto;
-  }
-
   tr {
-    border-bottom: 3px solid $secondary-color-7;
-
-    &.edit-row {
-      border-left: 3px solid $primary-color-4;
-      border-right: 3px solid $primary-color-4;
-      border-bottom: 10px solid $secondary-color-7;
-      border-top: 10px solid $secondary-color-7;
-    }
-
-    &:not(:first-child) {
-      background-color: $secondary-color-8;
-    }
-
-    th, td {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-
-    th {
-      text-align: left;
-    }
-
     td {
-      padding-top: 15px;
-      padding-bottom: 15px;
-      white-space: nowrap;
-
-      &.not-in-tw {
-        color: $secondary-color-3;
-      }
-
       &.name {
         .sub_names {
           padding-top: 5px;

@@ -1,5 +1,5 @@
 <div class="interns">
-  <table>
+  <table class="list-table">
     <tr>
       <th></th>
       <th>Emp ID</th>
@@ -15,9 +15,9 @@
 
     <% @interns.each do |intern| %>
       <tr>
-        <td class="not-in-tw">
+        <td>
           <% unless intern.present_in_tw %>
-            <span class='fa fa-ban'></span>
+            <span class='fa fa-ban not-in-tw'></span>
           <% end %>
         </td>
         <td class="emp-id">
