@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center">
+      Bulk import
+    </h2>
+  </div>
+
+  <div class="bulk-import white-page">
+    <div class="instructions">
+      <h4>Instructions</h4>
+      <ul>
+        <li> File must be CSV </li>
+        <li> First row must be the header row</li>
+        <li>
+          Example headers
+          <pre>
+            emp_id, display_name, first_name, last_name, dob, batch, gender, phone_number, thoughtworks_email, personal_email, dropbox_username
+          </pre>
+        </li>
+        <li>
+          The following fields must be there
+          <pre>
+            emp_id, display_name, first_name, dob, batch, gender
+          </pre>
+        </li>
+        <li> Date of Birth format must be as follows `dd/mm/yyyy` </li>
+        <li> Gender must be one of the following: male, female, others </li>
+        <li>
+          Give empty coma (,) for fields you don't want to give data
+          Example:
+          <pre>
+            emp_id, display_name, first_name, last_name, dob, batch, gender
+            12345, DN, FN, LN, 11/01/1111, 3, male
+            12346, DN2, FN2,, 12/01/2222, 2, female
+          </pre>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="panel-heading"> CSV Upload </div>
+      
+    </div>
+  </div>
+</div>

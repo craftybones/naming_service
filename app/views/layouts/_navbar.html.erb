@@ -4,15 +4,19 @@
   <ul class="navbar-nav">
 
     <li class="nav-item">
-      <%= link_to 'All Interns', interns_path, html_options = {:class => 'nav-link'} %>
+      <%= link_to 'All interns', interns_path, html_options = {:class => 'nav-link'} %>
     </li>
 
     <li class="nav-item">
-      <%= link_to 'New Intern', new_intern_path, html_options = {:class => 'nav-link'} %>
+      <%= link_to 'New intern', new_intern_path, html_options = {:class => 'nav-link'} %>
     </li>
 
     <li class="nav-item">
       <%= link_to 'Batches', batches_path, html_options = {:class => 'nav-link'} %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to 'Bulk import', bulk_import_interns_path, html_options = {:class => 'nav-link'} %>
     </li>
 
   </ul>

@@ -45,6 +45,10 @@ class InternsController < ApplicationController
     redirect_to interns_path
   end
 
+  def bulk_import
+
+  end
+
   def search
     @interns = Intern.search(params[:q])
 
