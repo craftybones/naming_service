@@ -7,6 +7,10 @@
 .interns {
   tr {
     td {
+      &.not-in-tw {
+        padding-right: 0;
+      }
+
       &.name {
         .sub_names {
           padding-top: 5px;
