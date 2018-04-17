@@ -10,7 +10,7 @@
       &.name {
         .sub_names {
           padding-top: 5px;
-          font-size: 16px;
+          font-size: 14px;
           color: $secondary-color-3;
           white-space: normal;
         }
@@ -18,7 +18,7 @@
 
       &.emails {
         div {
-          font-size: 16px;
+          font-size: 14px;
           &:nth-child(odd) {
             padding-bottom: 5px;
           }
