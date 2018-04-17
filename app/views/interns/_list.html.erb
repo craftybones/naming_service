@@ -15,19 +15,22 @@
 
     <% @interns.each do |intern| %>
       <tr>
-        <td class="not-in-tw">
-          <% unless intern.present_in_tw %>
+        <% if intern.present_in_tw %>
+          <td></td>
+        <% else %>
+          <td class="not-in-tw" title="Intern is not in TW now">
             <span class='fa fa-ban not-in-tw'></span>
-          <% end %>
-        </td>
+          </td>
+        <% end %>
+
         <td class="emp-id">
           <%= intern.emp_id %>
         </td>
         <td class="name">
-          <div class="display_name"><%= intern.display_name %></div>
+          <div class="display_name" title="Display name"><%= intern.display_name %></div>
           <div class="sub_names">
-            <span><%= intern.first_name %></span>
-            <span><%= intern.last_name %></span>
+            <span title="First name"><%= intern.first_name %></span>
+            <span title="Last name"><%= intern.last_name %></span>
           </div>
         </td>
         <td><%= intern.gender.humanize %></td>
@@ -39,15 +42,15 @@
         <td><%= intern.phone_number %></td>
         <td><%= intern.batch.name %></td>
         <td>
-          <%= link_to(intern) do %>
+          <%= link_to(intern, title: 'View intern details') do %>
             <span class="fa fa-eye"/>
           <% end %>
 
-          <%= link_to(edit_intern_path(intern)) do %>
+          <%= link_to(edit_intern_path(intern), title: 'Edit intern details') do %>
             <span class="fa fa-edit"/>
           <% end %>
 
-          <%= link_to(intern, method: :delete, data: {confirm: 'Are you sure?'}) do %>
+          <%= link_to(intern, method: :delete, data: {confirm: 'Are you sure?'}, title: 'Delete intern') do %>
             <span class="fa fa-trash"/>
           <% end %>
         </td>

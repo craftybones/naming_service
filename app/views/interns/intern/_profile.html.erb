@@ -2,25 +2,25 @@
   <div class="profile-picture">
     <span class="fa fa-user fa-9x"/>
   </div>
-  <div class="display-name">
+  <div class="display-name" title='Display name'>
     <% unless @intern.present_in_tw %>
-      <span class='fa fa-ban not-in-tw'></span>
+      <span class='fa fa-ban not-in-tw' title='Intern is not in TW now'></span>
     <% end %>
     <%= @intern.display_name %>
   </div>
   <div class="full-name">
-    <span> <%= @intern.first_name %> </span>
-    <span> <%= @intern.last_name %> </span>
+    <span title='First name'> <%= @intern.first_name %> </span>
+    <span title='Last name'> <%= @intern.last_name %> </span>
   </div>
 
   <div class="actions">
     <div class="action">
-      <%= link_to(edit_intern_path(@intern)) do %>
+      <%= link_to(edit_intern_path(@intern), title: 'Edit intern details') do %>
         <span class="fa fa-edit fa-lg"/>
       <% end %>
     </div>
     <div class="action">
-      <%= link_to(@intern, method: :delete, data: {confirm: 'Are you sure?'}) do %>
+      <%= link_to(@intern, method: :delete, data: {confirm: 'Are you sure?'}, title: 'Delete intern') do %>
         <span class="fa fa-trash fa-lg"/>
       <% end %>
     </div>
@@ -28,9 +28,9 @@
     <div class="action">
       <%= link_to(intern_path(@intern, intern: {present_in_tw: !@intern.present_in_tw}), method: :patch) do %>
         <% if @intern.present_in_tw %>
-          <span class='fa fa-ban fa-lg'></span>
+          <span class='fa fa-ban fa-lg' title='Mark intern as not in TW'></span>
         <% else %>
-          <span class='fa fa-undo fa-lg'></span>
+          <span class='fa fa-undo fa-lg' title='Undo mark intern as not in TW'></span>
         <% end %>
       <% end %>
     </div>
