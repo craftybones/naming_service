@@ -1,5 +1,5 @@
 <div class="intern-form white-page">
-  <%= form_with model: @intern, local: true do |form| %>
+  <%= form_with model: setup_intern(@intern), local: true do |form| %>
 
     <% if @intern != nil && @intern.errors.any? %>
       <div class="alert alert-danger" role="alert">

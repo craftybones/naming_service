@@ -6,7 +6,6 @@ class InternsController < ApplicationController
 
   def new
     @intern = Intern.new
-    @intern.build_dependents
     @batches = Batch.all
   end
 
