@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :interns do
     get 'search', :on => :collection
     get 'bulk-import', :on => :collection, :to => 'bulk_import'
+    post 'bulk-import', :on => :collection, :to => 'interns#import'
   end
 
   resources :batches do

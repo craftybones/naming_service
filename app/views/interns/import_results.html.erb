@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center">
+      Bulk import results <br>
+      Import <%= @results[:failed] > 0 ? 'Failed' : 'Succeeded' %>
+    </h2>
+  </div>
+
+  <div class="white-page">
+    <div class="panel">
+      <div class="panel-heading"> Summary </div>
+      <div>
+        <div><span> Filename: </span> <span><%= @results[:filename] %></span></div>
+        <div><span> Total no of rows: </span> <span><%= @results[:total] %></span></div>
+        <div><span> No of rows success: </span> <span><%= @results[:success] %></span></div>
+        <div><span> No of rows failed: </span> <span><%= @results[:failed] %></span></div>
+      </div>
+    </div>
+  </div>
+</div>

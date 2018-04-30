@@ -39,7 +39,10 @@
 
     <div class="panel">
       <div class="panel-heading"> CSV Upload </div>
-      
+        <%= form_tag bulk_import_interns_path, method: :post, multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Import CSV" %>
+        <% end %>
     </div>
   </div>
 </div>

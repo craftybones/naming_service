@@ -45,7 +45,12 @@ class InternsController < ApplicationController
   end
 
   def bulk_import
+  end
 
+  def import
+    @results = InternsCsvImportService.new(params[:file]).import
+    byebug
+    render 'import_results'
   end
 
   def search
@@ -64,15 +69,15 @@ end
 
 private
 
-  def intern_params
-    params.require(:intern).permit(:id, :emp_id, :display_name, :first_name, :last_name, :batch_id, :gender,
-                                   :dob, :phone_number, :present_in_tw,
-                                   github_attributes: [:id, :username], slack_attributes: [:id, :username],
-                                   dropbox_attributes: [:id, :username],
-                                   emails_attributes: [:id, :category, :address])
-  end
+def intern_params
+  params.require(:intern).permit(:id, :emp_id, :display_name, :first_name, :last_name, :batch_id, :gender,
+                                 :dob, :phone_number, :present_in_tw,
+                                 github_attributes: [:id, :username], slack_attributes: [:id, :username],
+                                 dropbox_attributes: [:id, :username],
+                                 emails_attributes: [:id, :category, :address])
+end
 
-  def filtering_params(params)
-    params.slice(:emp_id, :display_name, :first_name, :last_name, :email, :batch, :dob, :phone_number, :gender,
-                 :github_username, :slack_username, :dropbox_username)
-  end
+def filtering_params(params)
+  params.slice(:emp_id, :display_name, :first_name, :last_name, :email, :batch, :dob, :phone_number, :gender,
+               :github_username, :slack_username, :dropbox_username)
+end
