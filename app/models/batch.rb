@@ -1,6 +1,9 @@
 class Batch < ApplicationRecord
 
   has_many :intern
+  has_one :email, as: :emailable, dependent: :destroy
+
+  accepts_nested_attributes_for :email
 
   scope :all_except, -> (id) { where("id != #{id}").order('created_at DESC') }
   scope :with_name, -> (name) { where name: name }

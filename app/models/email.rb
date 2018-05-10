@@ -1,5 +1,6 @@
 class Email < ApplicationRecord
-  belongs_to :intern
+  belongs_to :emailable, polymorphic: true, optional: true
+
   validates :category, presence: true
   validates :address, format: { with: /\S+@\S+\.\S+/, if: :address_present?,
             message: -> (object, data) do

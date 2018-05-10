@@ -47,6 +47,7 @@ end
 private
 
 def batch_params
-  params.require(:batch).permit(:id, :name, :start_date, :end_date)
+  params.require(:batch).permit(:id, :name, :start_date, :end_date,
+                                email_attributes: [:id, :category, :address])
 end
 

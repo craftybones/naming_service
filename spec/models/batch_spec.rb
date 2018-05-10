@@ -6,6 +6,11 @@ RSpec.describe Batch, type: :model do
       t = Batch.reflect_on_association(:intern)
       expect(t.macro).to eq(:has_many)
     end
+
+    it 'shouild have one email' do
+      t = Batch.reflect_on_association(:email)
+      expect(t.macro).to eq(:has_one)
+    end
   end
 
   describe 'validations' do

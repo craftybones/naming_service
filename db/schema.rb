@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416094639) do
+ActiveRecord::Schema.define(version: 20180510015443) do
 
   create_table "batches", force: :cascade do |t|
     t.string "name"
@@ -29,12 +29,13 @@ ActiveRecord::Schema.define(version: 20180416094639) do
   end
 
   create_table "emails", force: :cascade do |t|
-    t.integer "intern_id"
     t.string "category"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["intern_id"], name: "index_emails_on_intern_id"
+    t.string "emailable_type"
+    t.integer "emailable_id"
+    t.index ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id"
   end
 
   create_table "github_info", force: :cascade do |t|

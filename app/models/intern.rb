@@ -3,7 +3,7 @@ class Intern < ApplicationRecord
   before_save :default_values
 
   belongs_to :batch
-  has_many :emails, dependent: :delete_all
+  has_many :emails, as: :emailable, dependent: :delete_all
   has_one :github, dependent: :destroy
   has_one :slack, dependent: :destroy
   has_one :dropbox, dependent: :destroy

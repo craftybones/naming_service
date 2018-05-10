@@ -1,5 +1,6 @@
 <tr>
   <td><%= batch.name %></td>
+  <td><%= batch.email.present? ? batch.email.address : '-' %></td>
   <td><%= batch.start_date %></td>
   <td><%= batch.end_date %></td>
   <td><%= batch.intern.size %></td>

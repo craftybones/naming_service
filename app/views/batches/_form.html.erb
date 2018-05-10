@@ -3,6 +3,12 @@
     <%= form.text_field :name, placeholder: 'Name' %>
   </td>
   <td>
+    <%= form.fields_for :email do |email_fields| %>
+      <%= email_fields.hidden_field :category %>
+      <%= email_fields.text_field :address, placeholder: "Batch email address"%>
+    <% end %>
+  </td>
+  <td>
     <%= form.date_field :start_date %>
   </td>
   <td>
