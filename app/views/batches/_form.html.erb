@@ -3,16 +3,21 @@
     <%= form.text_field :name, placeholder: 'Name' %>
   </td>
   <td>
+    <%= form.date_field :start_date %>
+  </td>
+  <td>
+    <%= form.date_field :end_date %>
+  </td>
+  <td>
     <%= form.fields_for :email do |email_fields| %>
       <%= email_fields.hidden_field :category %>
       <%= email_fields.text_field :address, placeholder: "Batch email address"%>
     <% end %>
   </td>
   <td>
-    <%= form.date_field :start_date %>
-  </td>
-  <td>
-    <%= form.date_field :end_date %>
+    <%= form.fields_for :slack do |slack_fields| %>
+      <%= slack_fields.text_field :username, placeholder: "Batch slack username"%>
+    <% end %>
   </td>
   <td></td>
   <td>

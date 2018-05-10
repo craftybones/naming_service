@@ -5,7 +5,7 @@ class Intern < ApplicationRecord
   belongs_to :batch
   has_many :emails, as: :emailable, dependent: :delete_all
   has_one :github, dependent: :destroy
-  has_one :slack, dependent: :destroy
+  has_one :slack, as: :slackable, dependent: :destroy
   has_one :dropbox, dependent: :destroy
 
   accepts_nested_attributes_for :github, :reject_if => :all_blank

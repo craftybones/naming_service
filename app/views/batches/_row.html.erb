@@ -1,8 +1,9 @@
 <tr>
   <td><%= batch.name %></td>
-  <td><%= batch.email.present? ? batch.email.address : '-' %></td>
   <td><%= batch.start_date %></td>
   <td><%= batch.end_date %></td>
+  <td><%= batch.email.present? ? batch.email.address : '-' %></td>
+  <td><%= batch.slack.present? ? batch.slack.username : '-' %></td>
   <td><%= batch.intern.size %></td>
   <td>
     <%= link_to(batch, title: 'View all interns in this batch') do %>

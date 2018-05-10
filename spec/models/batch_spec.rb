@@ -11,6 +11,11 @@ RSpec.describe Batch, type: :model do
       t = Batch.reflect_on_association(:email)
       expect(t.macro).to eq(:has_one)
     end
+
+    it 'should have one slack' do
+      t = Batch.reflect_on_association(:slack)
+      expect(t.macro).to eq(:has_one)
+    end
   end
 
   describe 'validations' do

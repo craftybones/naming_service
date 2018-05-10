@@ -49,7 +49,6 @@ class InternsController < ApplicationController
 
   def import
     @results = InternsCsvImportService.new(params[:file]).import
-    byebug
     render 'import_results'
   end
 

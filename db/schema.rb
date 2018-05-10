@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510015443) do
+ActiveRecord::Schema.define(version: 20180510024720) do
 
   create_table "batches", force: :cascade do |t|
     t.string "name"
@@ -61,11 +61,12 @@ ActiveRecord::Schema.define(version: 20180510015443) do
   end
 
   create_table "slack_info", force: :cascade do |t|
-    t.integer "intern_id"
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["intern_id"], name: "index_slack_info_on_intern_id"
+    t.string "slackable_type"
+    t.integer "slackable_id"
+    t.index ["slackable_type", "slackable_id"], name: "index_slack_info_on_slackable_type_and_slackable_id"
   end
 
 end
