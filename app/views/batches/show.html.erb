@@ -1,7 +1,22 @@
 <div class="container">
   <div class="heading">
-    <h2 class="text-center"> <%= @batch.name %> interns </h2>
+    <div class="white-page">
+      <h2 class="text-center"> <%= @batch.name %>  </h2>
+      <div>
+        <span> Start date: </span> <span> <%= @batch.start_date %> </span>
+      </div>
+      <div>
+        <span> End date: </span> <span> <%= @batch.end_date%> </span>
+      </div>
+      <div>
+        <span> Email: </span> <span> <%= @batch.email.present? ? @batch.email.address : '-' %> </span>
+      </div>
+      <div>
+        <span> Slack: </span> <span> <%= @batch.slack.present? ? @batch.slack.username : '-' %> </span>
+      </div>
+    </div>
   </div>
+
 
   <%= render 'interns/list'%>
 </div>
