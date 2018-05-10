@@ -1,22 +1,37 @@
 <div class="container">
-  <div class="heading">
-    <div class="white-page">
+
+  <div class="white-page">
+    <div class="heading">
       <h2 class="text-center"> <%= @batch.name %>  </h2>
-      <div>
-        <span> Start date: </span> <span> <%= @batch.start_date %> </span>
-      </div>
-      <div>
-        <span> End date: </span> <span> <%= @batch.end_date%> </span>
-      </div>
-      <div>
-        <span> Email: </span> <span> <%= @batch.email.present? ? @batch.email.address : '-' %> </span>
-      </div>
-      <div>
-        <span> Slack: </span> <span> <%= @batch.slack.present? ? @batch.slack.username : '-' %> </span>
+    </div>
+    <div class="attributes">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="attribute">
+            <div class="field"> Start date</div>
+            <div class="value"> <%= @batch.start_date %> </div>
+          </div>
+
+          <div class="attribute">
+            <div class="field"> Email</div>
+            <div class="value"> <%= @batch.email.present? ? @batch.email.address : '-' %> </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="attribute">
+            <div class="field"> End date</div>
+            <div class="value"> <%= @batch.end_date %> </div>
+          </div>
+
+          <div class="attribute">
+            <div class="field"> Slack username</div>
+            <div class="value"> <%= @batch.slack.present? ? @batch.slack.username : '-' %> </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <br>
+  <%= render 'interns/list' %>
 
-
-  <%= render 'interns/list'%>
 </div>
