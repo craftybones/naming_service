@@ -3,15 +3,19 @@ require 'csv'
 class InternsCsvImportService
 
   def initialize(file)
+    @file = file
     @filename = file.original_filename
-    @rows = get_csv_entries(file)
-    # @rows = get_rows_hash(file)
   end
 
   def import
-    return import_summary_on_invalid_headers(@filename, @rows.length) if invalid_headers? @rows
+    begin
+      rows = get_csv_entries(@file)
+    rescue
+        return import_summary_on_errors(@filename, 0, ['Invalid CSV file'])
+    end
+    return import_summary_on_invalid_errors(@filename, rows.length, ['Invalid headers']) if invalid_headers? rows
 
-    interns = @rows.map {|row|
+    interns = rows.map {|row|
       intern = Intern.new(transform_to_interns_params(row))
       intern.save
       {data: row, errors: intern.errors.count > 0 ? intern.errors.full_messages : []}
@@ -52,10 +56,10 @@ class InternsCsvImportService
     {username: username}
   end
 
-  def import_summary_on_invalid_headers(filename, total_rows)
+  def import_summary_on_errors(filename, total_rows, errors)
     {
         filename: filename,
-        errors: ['Invalid headers'],
+        errors: errors,
         total: total_rows,
         failed: total_rows,
         success: 0,
