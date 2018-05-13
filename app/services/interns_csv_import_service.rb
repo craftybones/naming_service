@@ -9,7 +9,7 @@ class InternsCsvImportService
   end
 
   def import
-    return import_summary_on_invalid_headers(@filename, @rows.length) if invalid_headers?
+    return import_summary_on_invalid_headers(@filename, @rows.length) if invalid_headers? @rows
 
     interns = @rows.map {|row|
       intern = Intern.new(transform_to_interns_params(row))
@@ -79,8 +79,14 @@ class InternsCsvImportService
     rows.select {|row| row[:errors].length > 0}
   end
 
-  def invalid_headers?
-    false
+  def invalid_headers? rows
+    headers = rows.empty? ? [] : rows[0].headers
+    !(headers - valid_headers).empty?
+  end
+
+  def valid_headers
+    [:emp_id, :display_name, :first_name, :last_name, :batch, :dob, :gender, :phone_number,
+     :thoughtworks_email, :personal_email, :dropbox_username, :github_username, :slack_username]
   end
 
 end

@@ -40,6 +40,13 @@
     <div class="panel">
       <div class="panel-heading"> Errors </div>
       <div>
+        <ul>
+          <% @results[:errors].each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div>
         <% @results[:invalid_rows].each do |row| %>
           <div class="csv">
             <div class="csv_headers"><%= row[:data].headers.join(',') %></div>
