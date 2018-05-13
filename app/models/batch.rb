@@ -8,7 +8,6 @@ class Batch < ApplicationRecord
   accepts_nested_attributes_for :slack, :reject_if => :all_blank
 
   scope :all_except, -> (id) { where("id != #{id}").order('created_at DESC') }
-  scope :with_name, -> (name) { where name: name }
 
   validates :name, presence: true, uniqueness: true, on: [:create, :save, :update]
   validate :start_date_cannot_be_empty_when_end_date_is_present, :end_date_cannot_be_less_than_start_date
