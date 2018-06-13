@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
   end
 
+  scope '/api' do
+    get 'interns/search', :to => 'interns_api#search'
+    get 'interns/filter', :to => 'interns_api#filter'
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

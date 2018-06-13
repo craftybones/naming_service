@@ -33,7 +33,25 @@ class Intern < ApplicationRecord
   scope :slack_username, -> (username) {joins(:slack).merge(Slack.username(username))}
 
   def self.search search_term
-    joins(:emails).joins(:github).joins(:slack).joins(:dropbox).where(search_query, {:search_term => "%#{search_term}%"})
+    left_outer_joins(:emails).left_outer_joins(:github)
+        .left_outer_joins(:slack).left_outer_joins(:dropbox)
+        .where(search_query, {:search_term => "%#{search_term}%"})
+  end
+
+  def attributes
+    {
+        :id => nil,
+        :display_name => nil,
+        :first_name => nil,
+        :last_name => nil,
+        :emp_id => nil,
+        :dob => nil,
+        :gender => nil,
+        :phone_number => nil,
+        :present_in_tw => nil,
+        :created_at => nil,
+        :updated_at => nil,
+    }
   end
 
   private

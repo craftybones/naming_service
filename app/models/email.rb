@@ -10,6 +10,16 @@ class Email < ApplicationRecord
 
   scope :address, -> (address) { where address: address }
 
+  def attributes
+    {
+        :id => nil,
+        :category => nil,
+        :address => nil,
+        :created_at => nil,
+        :updated_at => nil
+    }
+  end
+
 
   private
 

@@ -54,14 +54,6 @@ class InternsController < ApplicationController
 
   def search
     @interns = Intern.search(params[:q])
-
-    filtering_params(params).each do |key, value|
-      @interns = @interns.public_send(key, value) if value.present?
-    end
-    @interns = @interns.uniq
-
-    render json: @interns, include: [:github, :emails, :dropbox, :slack] if params[:api]
-
   end
 end
 
@@ -74,9 +66,4 @@ def intern_params
                                  github_attributes: [:id, :username], slack_attributes: [:id, :username],
                                  dropbox_attributes: [:id, :username],
                                  emails_attributes: [:id, :category, :address])
-end
-
-def filtering_params(params)
-  params.slice(:emp_id, :display_name, :first_name, :last_name, :email, :batch, :dob, :phone_number, :gender,
-               :github_username, :slack_username, :dropbox_username)
 end
