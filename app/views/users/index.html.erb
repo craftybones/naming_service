@@ -1,0 +1,30 @@
+<%= flash[:notice] %>
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center"> All Users </h2>
+  </div>
+
+  <div>
+    <table class="list-table">
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= user.name %>
+          </td>
+          <td>
+            <%= link_to(user, method: :delete, data: {confirm: 'Are you sure?'}, title: 'Delete user') do %>
+              <span class="fa fa-trash"/>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+
+</div>

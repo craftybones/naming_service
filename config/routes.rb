@@ -13,4 +13,12 @@ Rails.application.routes.draw do
 
   end
 
+  resources :users do
+
+  end
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
 end

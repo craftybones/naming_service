@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center"> Create new user </h2>
+  </div>
+
+  <div class="white-page">
+    <%= form_with model: @user, local: true do |f| %>
+
+      <% if @intern != nil && @intern.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <h2>
+            <%= pluralize(@intern.errors.count, "error") %>
+          </h2>
+          <ul>
+            <% @intern.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="panel">
+        <div class="attributes">
+          <div class="attribute">
+            <div class="field"> Name</div>
+            <div class="value"> <%= f.text_field :name, placeholder: 'Username' %> </div>
+          </div>
+          <div class="attribute">
+            <div class="field"> Password</div>
+            <div class="value"> <%= f.password_field :password, placeholder: 'Password' %> </div>
+          </div>
+          <div class="attribute">
+            <div class="field"> Password confirmation</div>
+            <div class="value"> <%= f.password_field :password_confirmation, placeholder: 'Confirm password' %> </div>
+          </div>
+        </div>
+        <br>
+        <div class="text-center"><%= f.submit %></div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

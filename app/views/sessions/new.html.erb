@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center"> Login </h2>
+  </div>
+
+  <div class="white-page">
+    <%= form_tag '/login' do %>
+
+      <div class="panel">
+        <div class="attributes">
+          <div class="attribute">
+            <div class="field"> Username </div>
+            <div class="value"> <%= text_field_tag :name %> </div>
+          </div>
+          <div class="attribute">
+            <div class="field"> Password</div>
+            <div class="value"> <%= password_field_tag :password %> </div>
+          </div>
+        </div>
+        <br>
+        <div class="text-center"><%= submit_tag "Login" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
