@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-
   end
 
   scope '/api' do
@@ -22,6 +21,8 @@ Rails.application.routes.draw do
     get 'interns/filter', :to => 'interns_api#filter'
   end
 
+  get 'api_token', :to => 'users#api_token'
+  put 'regenerate_token', :to => 'users#regenerate_token'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

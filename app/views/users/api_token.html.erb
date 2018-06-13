@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="heading">
+    <h2 class="text-center"> API Token </h2>
+  </div>
+  <div class="white-page">
+    <%= @token %>
+    <br>
+    <%= link_to(regenerate_token_path, method: :put, data: {confirm: 'Are you sure?'}, title: 'Regenerate') do %>
+      <span> Regenerate token </span>
+    <% end %>
+  </div>
+</div>

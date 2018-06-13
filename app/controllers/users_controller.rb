@@ -8,6 +8,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def api_token
+    @token = current_user.token
+  end
+
+  def regenerate_token
+    redirect_to api_token_path if current_user.regenerate_token
+  end
+
   def create
     user = User.new(user_params)
     if user.save
