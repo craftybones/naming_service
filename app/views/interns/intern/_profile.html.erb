@@ -1,6 +1,6 @@
 <div class="pic-and-names">
   <div class="profile-picture">
-    <span class="fa fa-user fa-9x"/>
+    <%= cl_image_tag(@intern.emp_id, :alt => "Profile Picture") %>
   </div>
   <div class="display-name" title='Display name'>
     <% unless @intern.present_in_tw %>

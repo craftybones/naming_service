@@ -36,6 +36,7 @@ gem 'font-awesome-sass', '~> 5.0.6'
 gem 'bootstrap', '~> 4.0.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'has_secure_token'
+gem 'cloudinary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
