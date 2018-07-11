@@ -2,6 +2,7 @@
   <table class="list-table">
     <tr>
       <th></th>
+      <th></th>
       <th>Emp ID</th>
       <th>Name</th>
       <th>Gender</th>
@@ -22,6 +23,10 @@
             <span class='fa fa-ban not-in-tw'></span>
           </td>
         <% end %>
+
+        <td class="profile-picture-thumbnail">
+          <%= cl_image_tag(intern.emp_id, :radius=>"max", :default_image => "default.png") %>
+        </td>
 
         <td class="emp-id">
           <%= intern.emp_id %>

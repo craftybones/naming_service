@@ -29,6 +29,14 @@
           }
         }
       }
+
+      &.profile-picture-thumbnail {
+        padding-top: 0;
+        padding-bottom: 0;
+        img {
+          height: 70px
+        }
+      }
     }
   }
 }
