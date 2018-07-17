@@ -24,6 +24,7 @@ class InternsController < ApplicationController
     if @intern.update(intern_params)
       redirect_to intern_path
     else
+      @batches = Batch.all
       render 'edit'
     end
   end
