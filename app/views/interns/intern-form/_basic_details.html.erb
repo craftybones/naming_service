@@ -4,6 +4,15 @@
   </div>
   <div class="attributes">
     <div class="attribute">
+      <div class="field"> Picture </div>
+      <div class="value">
+        <div class="profile-picture-preview">
+          <%= cl_image_tag(profile_picture_id(form.object.profile_picture), :width => 150, :crop => "fit") %>
+        </div>
+        <%= cl_image_upload_tag(:profile_picture, :crop => :limit, :width => 1000, :height => 1000) %>
+      </div>
+    </div>
+    <div class="attribute">
       <div class="field"> Emp ID <span class="required"> * </span> </div>
       <div class="value"> <%= form.number_field :emp_id, placeholder: 'Employee ID' %> </div>
     </div>

@@ -11,4 +11,13 @@ module InternsHelper
     end
     intern
   end
+
+  def profile_picture_id id
+    if id.present?
+      id
+    else
+      "default.png"
+    end
+
+  end
 end

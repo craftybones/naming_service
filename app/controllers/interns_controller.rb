@@ -20,7 +20,7 @@ class InternsController < ApplicationController
 
   def update
     @intern = Intern.find(params[:id])
-
+    @intern = set_profile_picture(params[:profile_picture], @intern)
     if @intern.update(intern_params)
       redirect_to intern_path
     else
@@ -30,9 +30,11 @@ class InternsController < ApplicationController
 
   def create
     @intern = Intern.new(intern_params)
+    @intern = set_profile_picture(params[:profile_picture], @intern)
     if @intern.save
       redirect_to intern_path(@intern)
     else
+      @batches = Batch.all
       render 'new'
     end
   end
@@ -66,4 +68,13 @@ def intern_params
                                  github_attributes: [:id, :username], slack_attributes: [:id, :username],
                                  dropbox_attributes: [:id, :username],
                                  emails_attributes: [:id, :category, :address])
+end
+
+def set_profile_picture(profile_picture, intern)
+  if profile_picture.present?
+    preloaded = Cloudinary::PreloadedFile.new(profile_picture)
+    raise "Invalid upload signature" if !preloaded.valid?
+    intern[:profile_picture] = preloaded.identifier
+  end
+  intern
 end

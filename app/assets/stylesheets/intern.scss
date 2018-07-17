@@ -2,6 +2,13 @@
 
 .intern, .intern-form {
 
+  .profile-picture-preview {
+    border: 1px solid $secondary-color-7;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
   .profile {
 
     .pic-and-names {
@@ -17,7 +24,6 @@
         img {
           width: 100%;
         }
-
       }
 
       .display-name {
@@ -56,6 +62,5 @@
       }
     }
   }
-
 
 }
