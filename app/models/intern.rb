@@ -13,6 +13,7 @@ class Intern < ApplicationRecord
   accepts_nested_attributes_for :dropbox, :reject_if => :all_blank
   accepts_nested_attributes_for :emails
 
+  validates_uniqueness_of :emp_id
   validates :emp_id, :display_name, :first_name, :dob, :gender, presence: true
   validates :phone_number, numericality: true, length: {is: 10}, if: :phone_number_present?
   validates :emp_id, numericality: true, length: {maximum: 10}, if: :emp_id_present?
