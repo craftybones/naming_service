@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe BatchesController, type: :controller do
+
+  before(:each) do
+    allow(controller).to receive(:authenticate)
+  end
+
   describe 'GET index' do
     it 'should render index template' do
       get :index
