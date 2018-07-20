@@ -64,12 +64,5 @@ RSpec.describe Batch, type: :model do
       expect(batches[0].name).to eq('STEP-3')
       expect(batches[1].name).to eq('STEP-1')
     end
-
-    it 'should filter based on batch name' do
-      batches = Batch.with_name 'STEP-2'
-      expect(batches.size).to eq(1)
-      expect(batches[0].name).to eq('STEP-2')
-    end
-
   end
 end
