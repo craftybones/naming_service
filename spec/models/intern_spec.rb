@@ -162,6 +162,13 @@ RSpec.describe Intern, type: :model do
       expect(search_resuts[0].dropbox.username).to eq('dropboxusername')
     end
 
+    it 'should search by batch name' do
+      search_resuts = Intern.search 'STEP-1'
+
+      expect(search_resuts.size).to eq(1)
+      expect(search_resuts[0].batch.name).to eq('STEP-1')
+    end
+
     it 'should give empty results when the search term does not match' do
       search_resuts = Intern.search 'random'
 

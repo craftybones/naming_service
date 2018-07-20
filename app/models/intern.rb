@@ -34,8 +34,11 @@ class Intern < ApplicationRecord
   scope :slack_username, -> (username) {joins(:slack).merge(Slack.username(username))}
 
   def self.search search_term
-    left_outer_joins(:emails).left_outer_joins(:github)
-        .left_outer_joins(:slack).left_outer_joins(:dropbox)
+  left_outer_joins(:emails)
+        .left_outer_joins(:github)
+        .left_outer_joins(:slack)
+        .left_outer_joins(:dropbox)
+        .left_outer_joins(:batch)
         .where(search_query, {:search_term => "%#{search_term}%"})
   end
 
@@ -68,7 +71,7 @@ class Intern < ApplicationRecord
   end
 
   def self.searchable_fields
-    %w(emp_id display_name first_name last_name emails.address github_info.username slack_info.username dropbox_info.username )
+    %w(emp_id display_name first_name last_name emails.address github_info.username slack_info.username dropbox_info.username name )
   end
 
 
