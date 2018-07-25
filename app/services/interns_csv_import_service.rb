@@ -30,7 +30,8 @@ class InternsCsvImportService
   end
 
   def transform_to_interns_params(r)
-    row = r.to_h
+    unstripped_row = r.to_h
+    row=unstripped_row.each {|k, v| unstripped_row[k]= v.strip}
     intern_params = row.slice(:emp_id, :display_name, :first_name, :last_name, :dob, :gender)
     batch = Batch.find_by(name: row[:batch])
     intern_params[:batch_id] = batch.present? ? batch.id : nil
