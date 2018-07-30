@@ -66,7 +66,7 @@ class Intern < ApplicationRecord
 
   def self.search_query
     (searchable_fields.map {|field|
-      "#{field} LIKE :search_term"
+      "CAST(#{field} AS text) LIKE :search_term"
     }).join(' OR ')
   end
 
