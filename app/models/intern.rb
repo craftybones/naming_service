@@ -24,7 +24,6 @@ class Intern < ApplicationRecord
   scope :display_name, -> (display_name) {where display_name: display_name}
   scope :first_name, -> (first_name) {where first_name: first_name}
   scope :last_name, -> (last_name) {where last_name: last_name}
-  scope :batch, -> (batch) {joins(:batch).merge(Batch.find_by(name: batch))}
   scope :dob, -> (dob) {where dob: dob}
   scope :phone_number, -> (phone_number) {where phone_number: phone_number}
   scope :gender, -> (gender) {where gender: gender}
@@ -32,6 +31,11 @@ class Intern < ApplicationRecord
   scope :github_username, -> (username) {joins(:github).merge(Github.username(username))}
   scope :dropbox_username, -> (username) {joins(:dropbox).merge(Dropbox.username(username))}
   scope :slack_username, -> (username) {joins(:slack).merge(Slack.username(username))}
+
+  def self.batch(name)
+    batch=Batch.find_by_name(name)
+    batch.present? ? Intern.where(batch_id: batch.id) : []
+  end
 
   def self.search search_term
   left_outer_joins(:emails)
