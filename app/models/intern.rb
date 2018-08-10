@@ -59,6 +59,7 @@ class Intern < ApplicationRecord
         :present_in_tw => nil,
         :created_at => nil,
         :updated_at => nil,
+        :profile_picture => nil
     }
   end
 
