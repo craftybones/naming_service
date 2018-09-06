@@ -25,7 +25,13 @@
         <% end %>
 
         <td class="profile-picture-thumbnail">
-          <%= cl_image_tag(profile_picture_id(intern.profile_picture), :height => 70, :width => 70, :radius=>"max") %>
+          <%= cl_image_tag(profile_picture_id(intern.profile_picture),
+                           :height => 70,
+                           :width => 70,
+                           :radius=>"max",
+                           :gravity=>"face",
+                           :crop=>"thumb",
+                           :zoom=>0.6) %>
         </td>
 
         <td class="emp-id">
