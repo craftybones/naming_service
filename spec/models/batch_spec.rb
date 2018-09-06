@@ -58,8 +58,8 @@ RSpec.describe Batch, type: :model do
       expect(batches[2].name).to eq('STEP-1')
     end
 
-    it 'should give all the batches except the give batch id' do
-      batches = Batch.all_except 2
+    it 'should give all the batches except the given batch id' do
+      batches = Batch.all_except Batch.all[1].id
       expect(batches.size).to eq(2)
       expect(batches[0].name).to eq('STEP-3')
       expect(batches[1].name).to eq('STEP-1')

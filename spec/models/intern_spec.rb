@@ -127,7 +127,7 @@ RSpec.describe Intern, type: :model do
     end
 
     it 'should search by last name' do
-      search_resuts = Intern.search 'last'
+      search_resuts = Intern.search 'Last'
 
       expect(search_resuts.size).to eq(1)
       expect(search_resuts[0].last_name).to eq('Last Name')
@@ -226,7 +226,7 @@ RSpec.describe Intern, type: :model do
       expect(interns.size).to eq(1)
     end
 
-    pending it 'should filter by batch name' do
+    it 'should filter by batch name' do
       interns = Intern.batch 'STEP-1'
 
       expect(interns.size).to eq(1)
